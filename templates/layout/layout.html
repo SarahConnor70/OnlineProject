@@ -23,31 +23,31 @@
 
                 <div class="sidebar-wrapper">
                     <ul class="nav">
-                        <li class="active">
+                        <li {% if (dashboard) %} class="active" {% endif %}>
                             <a href="/dashboard">
                                 <i class="material-icons">dashboard</i>
                                 <p>Tableau de bord</p>
                             </a>
                         </li>
-                        <li>
+                        <li {% if (cordonnee) %} class="active" {% endif %}>
                             <a href="/cordonnees">
                                 <i class="material-icons">location_city</i>
                                 <p>Coordonnées Online</p>
                             </a>
                         </li>
-                        <li>
+                        <li {% if (formation) %} class="active" {% endif %}>
                             <a href="/formation">
                                 <i class="material-icons">school</i>
                                 <p>Créer une formation</p>
                             </a>
                         </li>
-                        <li>
+                        <li {% if (stagiaire) %} class="active" {% endif %}>
                             <a href="/stagiaire">
                                 <i class="material-icons">person_add</i>
                                 <p>Créer un stagiaire</p>
                             </a>
                         </li>
-                        <li>
+                        <li {% if (fvisite) %} class="active" {% endif %}>
                             <a href="/fvisite">
                                 <i class="material-icons">today</i>
                                 <p>Jour de visite</p>
