@@ -1,3 +1,9 @@
 # Slim Framework 3 Skeleton Application
 
-Plus tard.
+```
+composer install
+```
+Et surtout!!
+```
+composer require slim/twig-view
+```
