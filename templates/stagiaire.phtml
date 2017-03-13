@@ -1,0 +1,58 @@
+{% extends 'layout/layout.html' %}
+{% block content %}
+<div class="col-md-offset-3 col-lg-6 col-md-12">
+    <div class="card">
+        <div class="card-header" data-background-color="orange">
+            <h3 class="title">Liste des stagiaires de la formation en cours</h3>
+        </div>
+        <div class="card-content table-responsive">
+			<table class="table table-hover">
+                <thead class="text-warning" style="color:orange;">
+                <th>Stagiaire</th>
+                <th>Resultat Test</th>
+                <th>Stage</th>
+                <th>Date de visite de stage</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><div contenteditable="true">Nom</div></td>
+                    <td></td>
+                    <td></td>
+                    <td><div contenteditable="true">Jour</div></td>
+                </tr>
+                <tr>
+                	<td><div contenteditable="true">Prenom</div></td>
+                	<td></td>
+                    <td></td>
+                    <td><div contenteditable="true">Heure</div></td>
+                </tr>
+                <tr>
+                    <td><div contenteditable="true">Ville</div></td>
+                    <td></td>
+                    <td></td>
+                    <td><div contenteditable="true">Tuteur</div></td>
+                </tr>
+                <tr>
+                	<td><div contenteditable="true">Mail</div></td>
+                	<td></td>
+                    <td></td>
+                    <td><div contenteditable="true">Téléphone</div></td>
+                </tr>
+                <tr>
+                	<td><div contenteditable="true">CP</div></td>
+                	<td></td>
+                    <td></td>
+                    <td><div contenteditable="true">Mail</div></td>
+                </tr>
+                <tr>
+                	<td><div contenteditable="true">Téléphone</div></td>
+                	<td></td>
+                	<td></td>
+                	<td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+	</div>
+</div>
+{% endblock %}
