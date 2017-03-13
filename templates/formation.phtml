@@ -1,50 +1,50 @@
 {% extends 'layout/layout.html' %}
 {% block content %}
-    <div class="row">
-        <div class="col-md-offset-2 col-lg-8 col-md-12">
-            <div class="card">
-                <div class="card-header" data-background-color="purple">
-                    <h4 class="title">Créer une formation</h4>
-                </div>
-                <div class="card-content col-md-offset-2 col-md-8">
-                    <label style="display: block; width: 200px;float: left;margin-top: 5px;">Date de début</label>
-                    <input type="text" name="dateDebut" id="dateDebut" style="width: 82px;border-left: none; border-top: none; border-right: none;">
-                </div>
-
-                <div class="card-content col-md-offset-2 col-md-8">
-                    <label style="display: block; width: 200px;float: left;margin-top: 5px;">Date de fin</label>
-                    <input type="text" name="dateFin" id="dateFin" style="width: 82px;border-left: none; border-top: none; border-right: none;">
-                </div>
-
-                <div class="card-content col-md-offset-2 col-md-8">
-                    <label style="display: block; width: 200px;float: left;margin-top: 5px;">Places de la Région</label>
-                    <input type="text" name="placeRegion" id="placeRegion" style="width: 30px;border-left: none; border-top: none; border-right: none;">
-                </div>
-
-                <div class="card-content col-md-offset-2 col-md-10">
-                    <label style="display: block; width: 200px;float: left;margin-top: 5px;">Places supplémentaires</label>
-                    <input type="text" name="placeSupp" id="placeSupp" style="width: 30px;border-left: none; border-top: none; border-right: none;">
-                </div>
-
-                <div class="card-content col-md-offset-2 col-md-8">
-                    <label style="display: block; width: 200px;float: left;margin-top: 5px;">Intitulé de la formation</label>
-                    <input type="text" name="intitule" id="intitule" style="width: 200px; border-left: none; border-top: none; border-right: none;">
-                </div>
-
-                <div class="card-content col-md-offset-2 col-md-8">
-                    <label style="display: block; width: 200px;float: left;margin-top: 5px;">Nom du titre</label>
-                    <input type="text" name="titre" id="titre" style="width: 200px; border-left: none; border-top: none; border-right: none;">
-                </div>
-
-                <div class="card-content col-md-offset-2 col-md-8">
-                    <label>Logos des financiers</label>
-                </div>
-                <div class="col-md-12"><img src="../assets/img/logoconseil.png " style="height: 85px;width: 70px;margin-bottom: 5px;" alt="logo Conseil regional"></div>
+<div class="row">
+    <div class="col-md-offset-2 col-lg-8 col-md-12">
+        <div class="card">
+            <div class="card-header" data-background-color="purple">
+                <h4 class="title">Créer une formation</h4>
             </div>
-                <div class="card-footer">
-                    <button id="maj" class="btn btn-primary">Mettre à jour</button>
-                    <button id="default" class="btn btn-primary">Valeur par défaut</button>
-                </div>
+            <div class="card-content col-md-offset-2 col-md-8">
+                <label style="display: block; width: 200px;float: left;margin-top: 5px;">Date de début</label>
+                <input type="date" name="dateDebut" id="dateDebut" style="width: 150px;border-left: none; border-top: none; border-right: none;">
+            </div>
+
+            <div class="card-content col-md-offset-2 col-md-8">
+                <label style="display: block; width: 200px;float: left;margin-top: 5px;">Date de fin</label>
+                <input type="date" name="dateFin" id="dateFin" style="width: 150px;border-left: none; border-top: none; border-right: none;">
+            </div>
+
+            <div class="card-content col-md-offset-2 col-md-8">
+                <label style="display: block; width: 200px;float: left;margin-top: 5px;">Places de la Région</label>
+                <input type="text" name="placeRegion" id="placeRegion" style="width: 30px;border-left: none; border-top: none; border-right: none;">
+            </div>
+
+            <div class="card-content col-md-offset-2 col-md-10">
+                <label style="display: block; width: 200px;float: left;margin-top: 5px;">Places supplémentaires</label>
+                <input type="text" name="placeSupp" id="placeSupp" style="width: 30px;border-left: none; border-top: none; border-right: none;">
+            </div>
+
+            <div class="card-content col-md-offset-2 col-md-8">
+                <label style="display: block; width: 200px;float: left;margin-top: 5px;">Intitulé de la formation</label>
+                <input type="text" name="intitule" id="intitule" style="width: 200px; border-left: none; border-top: none; border-right: none;">
+            </div>
+
+            <div class="card-content col-md-offset-2 col-md-8">
+                <label style="display: block; width: 200px;float: left;margin-top: 5px;">Nom du titre</label>
+                <input type="text" name="titre" id="titre" style="width: 200px; border-left: none; border-top: none; border-right: none;">
+            </div>
+
+            <div class="card-content col-md-offset-2 col-md-8">
+                <label>Logos des financiers</label>
+            </div>
+            <div class="col-md-12"><img src="../assets/img/logoconseil.png " style="height: 85px;width: 70px;margin-bottom: 5px;" alt="logo Conseil regional"></div>
+        </div>
+        <div class="card-footer">
+            <button id="maj" class="btn btn-primary">Mettre à jour</button>
+            <button id="default" class="btn btn-primary">Valeur par défaut</button>
         </div>
     </div>
+</div>
 {% endblock %}
