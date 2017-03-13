@@ -10,9 +10,9 @@ $app->get("/dashboard", function($request, $response, $args) {
     ]);
 });
 
-$app->get("/cordonnees", function($request, $response, $args) {
-    return $this->view->render($response, 'cordonnees.phtml', [
-        "cordonnee" => true
+$app->get("/coordonnees", function($request, $response, $args) {
+    return $this->view->render($response, 'coordonnees.phtml', [
+        "coordonnee" => true
     ]);
 });
 
