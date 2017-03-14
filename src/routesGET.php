@@ -22,8 +22,13 @@ $app->get("/cordonnees", function($request, $response, $args) {
     if (!login::VerifSession()) {
         return $this->view->render($response, "index.phtml");
     } else {
-        return $this->view->render($response, 'cordonnees.phtml', [
-            "coordonnee" => true
+        $online = ModelCoord::getEntreprise();
+
+        return $this->view->render($response, 'coordonnees.phtml', [
+        "coordonnee"      => true,
+        "nomOnline"       => $online['nomEntreprise'],
+        "adresseOnline"   => $online['adresseEntreprise'],
+        "telephoneOnline" => $online['telephoneEntreprise']
         ]);
     }
 });
