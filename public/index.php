@@ -26,6 +26,7 @@ require __DIR__ . '/../src/middleware.php';
 require __DIR__ . '/../models/database.class.php';
 require __DIR__ . '/../models/createStagiaire.php';
 require __DIR__ . '/../models/modelCoord.php';
+require __DIR__ . '/../models/login.class.php';
 
 // Register routes
 require __DIR__ . '/../src/routesGET.php';
