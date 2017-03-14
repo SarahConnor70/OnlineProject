@@ -7,16 +7,18 @@
                     <h3 class="title">Coordonnées</h3>
                     <p class="category">Retrouvez les informations de l'entreprise</p>
                 </div>
-                <div class="card-content">
-                    <div><img src="../assets/img/logo.png" alt="logo Onlineformapro"></div>
-                    <div id="name" contenteditable="true">Onlineformapro Vesoul</div>
-                    <div id="adress" contenteditable="true">19 rue du Praley, 70000 Vesoul</div>
-                    <div id="phone" contenteditable="true">03.84.76.52.44</div>
-                </div>
-                <div class="card-footer">
-                    <button id="maj" class="btn btn-primary">Mettre à jour</button>
-                    <button id="default" class="btn btn-primary">Valeur par défaut</button>
-                </div>
+                <form id="online" method="POST" action="/coordonnees">
+                    <div class="card-content">
+                        <div><img src="../assets/img/logo.png" alt="logo Onlineformapro"></div>
+                        <div id="nomOnline" contenteditable="true">Onlineformapro Vesoul</div>
+                        <div id="adresseOnline" contenteditable="true">19 rue du Praley, 70000 Vesoul</div>
+                        <div id="telephoneOnline" contenteditable="true">03.84.76.52.44</div>
+                    </div>
+                    <div class="card-footer">
+                        <button id="maj" class="btn btn-primary">Mettre à jour</button>
+                        <button id="default" class="btn btn-primary">Valeur par défaut</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
