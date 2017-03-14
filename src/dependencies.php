@@ -25,3 +25,9 @@ $container['view'] = function ($c) {
     $view->addExtension(new Slim\Views\TwigExtension($c['router'], $basePath));
     return $view;
 };
+
+// login info
+$container['login'] = function($c) {
+    $login = $c->get('settings')['connection'];
+    return [$login['email'], $login['pass']];
+};
