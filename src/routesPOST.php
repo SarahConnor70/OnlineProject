@@ -4,21 +4,18 @@
  */
 
 $app->post("/", function($request, $response, $args) {
-    $erreur = [];
+    $data   = [];
     $json   = json_decode($request->getBody());
-    if (($json->email == null || $json->pass == null || $json->email !== $this->login[0] || $json->pass !== $this->login[1])) {
-        $erreur = [
+    if (($json->email == null || $json->pass == null)) {
+        $data = [
             "erreur" => true,
             "message" => "Impossible de se connecter. (Erreur d'email/mot de passe)"
         ];
     } else {
-        $erreur = [
-            "erreur" => false,
-            "message" => "Vous êtes maintenant connecté! ;)"
-        ];
+        $data = login::connexion($json->email, $json->pass, $this->login[0], $this->login[1]);
     }
     $response->withHeader('Content-type', 'application/json');
-    return $response->withJson($erreur, 200, JSON_PRETTY_PRINT);
+    return $response->withJson($data, 200, JSON_PRETTY_PRINT);
 });
 
 $app->post('/coordonnees', function($request, $response){
