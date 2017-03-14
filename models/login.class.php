@@ -1,6 +1,7 @@
 <?php
 class Login {
     public static function connexion($login, $password, $logCor, $passCor) {
+        global $app;
         if (($login !== $logCor|| $password !== $passCor)) {
             $data = [
                 "erreur" => true,
