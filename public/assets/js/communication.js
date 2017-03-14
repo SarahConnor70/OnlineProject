@@ -5,7 +5,7 @@ $(document).ready(function() {
         var mail = $("#mail").val();
         var pass = $("#pass").val();
         if ((mail == "") || (pass == "")) {
-            fairNotif("Veuillez remplir les champs demandés.");
+            faireNotif("Veuillez remplir les champs demandés.");
         } else {
             $.ajax({
                 url: '/',
@@ -18,7 +18,7 @@ $(document).ready(function() {
                     if (json["erreur"] == false) {
                         $(location).attr('href', '/dashboard');
                     } else {
-                        fairNotif(json["message"]);
+                        faireNotif(json["message"]);
                     }
                 }
             })
@@ -55,7 +55,7 @@ $(document).ready(function() {
         }
     });
 
-    function fairNotif(message) {
+    function faireNotif(message) {
         noty({
             text: message,
             dismissQueue: true,
