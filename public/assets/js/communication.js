@@ -2,9 +2,6 @@ $(document).ready(function(){
 
 	$('#online').on('submit', function(e){
 		e.preventDefault();  // Le formulaire ne s'envoie pas
-
-		var $this = $(this);  // stocke le formulaire
-
 		var nomOnline   = $('#nomOnline').html();
 		var adresseOnline   = $('#adresseOnline').html();
 		var telephoneOnline = $('#telephoneOnline').html();
@@ -16,15 +13,20 @@ $(document).ready(function(){
 			$.ajax({
 				url: '/coordonnees',
 				type: 'POST',
-				data: $this.serialize(),  // envoie les données du formulaire
+				data: "nomOnline=" + nomOnline + "&adresseOnline=" + adresseOnline + "&telephoneOnline=" + telephoneOnline,  // envoie les données du formulaire
 				dataType: 'json',
 				success: function(json){
+					console.log(json);
 					if(json.reponse == 'ok'){
 						alert('Tout est ok');
 					}
 					else{
 						alert('Problème');
 					}
+				},
+				error: function(error) {
+                  alert('error;');
+                  console.log(eval(error));
 				}
 			});
 		}
