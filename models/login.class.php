@@ -7,12 +7,21 @@ class Login {
                 "message" => "Email ou mot de passe incorrect!"
             ];
         } else {
-            $_SESSION["toke_connexion"] = hash('sha256', $login);
             $data   = [
                 "erreur" => false,
                 "message" => "Vous êtes maintenant connectés!"
             ];
+            self::setSession($login);
         }
         return $data;
+    }
+
+    public static function setSession($login) {
+        $token = hash('sha256', $login);
+        return $_SESSION["token_connexion"] = $token;
+    }
+
+    public static function VerifSession() {
+        return isset($_SESSION["token_connexion"]) ? true : false;
     }
 }
