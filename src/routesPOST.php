@@ -9,7 +9,7 @@ $app->post("/", function($request, $response, $args) {
     if (($json->email == null || $json->pass == null)) {
         $data = [
             "erreur" => true,
-            "message" => "Impossible de se connecter. (Erreur d'email/mot de passe)"
+            "message" => "Veuillez remplir les champs demandés."
         ];
     } else {
         $data = login::connexion($json->email, $json->pass, $this->login[0], $this->login[1]);
