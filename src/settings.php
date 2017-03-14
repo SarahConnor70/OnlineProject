@@ -15,5 +15,9 @@ return [
             'path' => __DIR__ . '/../logs/app.log',
             'level' => \Monolog\Logger::DEBUG,
         ],
+        'connection' => [
+            'email' => 'EMAIL ICI',
+            'pass' => 'MOT DE PASSE ICI'
+        ],
     ],
 ];
