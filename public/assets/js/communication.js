@@ -1,7 +1,6 @@
 $(document).ready(function() {
     // connexion
     $("#connexion").on('click', function() {
-        console.log("hello");
         var mail = $("#mail").val();
         var pass = $("#pass").val();
         if ((mail == "") || (pass == "")) {
@@ -42,14 +41,13 @@ $(document).ready(function() {
                 success: function(json){
                     console.log(json);
                     if(json.reponse == 'ok'){
-                        alert('Tout est ok');
+                        faireNotif("Tout est ok!");
                     } else {
-                        alert('Problème');
+                        faireNotif("Un problème est survenu ...");
                     }
                 },
                 error: function(error) {
-                    alert('error;');
-                    console.log(eval(error));
+                    faireNotif("Un problème est survenu ...");
                 }
             });
         }
