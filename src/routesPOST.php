@@ -19,18 +19,24 @@ $app->post("/", function($request, $response, $args) {
 });
 
 $app->post('/coordonnees', function($request, $response){
-	
-	if(empty($_POST['nomOnline']) && empty($_POST['adresseOnline']) && empty($_POST['telephoneOnline'])) {
-    	if(($_POST['nomOnline'] !== '') && ($_POST['adresseOnline'] !== '') && ($_POST['telephoneOnline'] !=='')) {
-        	$reponse = 'ok';
-    	} else {
-        	$reponse = 'Les champs sont vides';
-    	}
-	} else {
-    	$reponse = 'Tous les champs ne sont setter';
-}
-echo json_encode(['reponse' => $reponse]);
 
+	if(!empty($_POST['nomOnline']) && !empty($_POST['adresseOnline']) && !empty($_POST['telephoneOnline'])) {
+    		if(($_POST['nomOnline'] !== '') && ($_POST['adresseOnline'] !== '') && ($_POST['telephoneOnline'] !=='')) {
+        		$reponse = 'ok';
+        		$online = [];
+			$online[0] = $_POST['nomOnline'];
+			$online[1] = $_POST['adresseOnline'];
+			$online[2] = $_POST['telephoneOnline'];
+			ModelCoord::setEntreprise($online);
+    		} 
+		else {
+        		$reponse = 'Les champs sont vides';
+    		}
+	}
+	else {
+    		$reponse = 'Tous les champs ne sont setter';
+	}
+	echo json_encode(['reponse' => $reponse]);
 });
 
 ?>
