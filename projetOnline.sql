@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost
--- Généré le :  Ven 10 Mars 2017 à 14:15
+-- Généré le :  Mer 15 Mars 2017 à 10:48
 -- Version du serveur :  10.1.21-MariaDB
 -- Version de PHP :  7.0.15
 
@@ -20,7 +20,27 @@ SET time_zone = "+00:00";
 -- Base de données :  `projetOnline`
 --
 
-CREATE DATABASE projetOnline CHARACTER SET 'utf8';
+CREATE DATABASE 'projetOnline';
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `coordonnees`
+--
+
+CREATE TABLE `coordonnees` (
+  `id` int(1) NOT NULL,
+  `nomEntreprise` varchar(100) NOT NULL,
+  `adresseEntreprise` varchar(150) NOT NULL,
+  `telephoneEntreprise` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+--
+-- Contenu de la table `coordonnees`
+--
+
+INSERT INTO `coordonnees` (`id`, `nomEntreprise`, `adresseEntreprise`, `telephoneEntreprise`) VALUES
+(1, 'OnlineFormaPro Vesoul', '19 rue du Praley, 70000 Vesoul', '03.84.76.52.44');
 
 -- --------------------------------------------------------
 
@@ -78,6 +98,12 @@ CREATE TABLE `stagiaires` (
 --
 
 --
+-- Index pour la table `coordonnees`
+--
+ALTER TABLE `coordonnees`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `formations`
 --
 ALTER TABLE `formations`
@@ -99,6 +125,11 @@ ALTER TABLE `stagiaires`
 -- AUTO_INCREMENT pour les tables exportées
 --
 
+--
+-- AUTO_INCREMENT pour la table `coordonnees`
+--
+ALTER TABLE `coordonnees`
+  MODIFY `id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `formations`
 --
