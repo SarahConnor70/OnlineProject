@@ -51,6 +51,7 @@ $app->post('/formation', function($request, $response){
         $formation[3] = $_POST['placeSupp'];
         $formation[4] = $_POST['intitule'];
         $formation[5] = $_POST['titre'];
+	$formation[6] = $_POST["promo"];
         ModelFormation::setFormation($formation);
     }
     else{
