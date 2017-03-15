@@ -18,7 +18,7 @@ $app->get("/dashboard", function($request, $response, $args) {
     }
 });
 
-$app->get("/cordonnees", function($request, $response, $args) {
+$app->get("/coordonnees", function($request, $response, $args) {
     if (!login::VerifSession()) {
         return $this->view->render($response, "index.phtml");
     } else {
