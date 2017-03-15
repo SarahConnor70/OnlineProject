@@ -21,6 +21,5 @@ class stagiaire {
         $query->execute();
         $fetch  = $query->fetchAll();
         return sizeof($fetch) > 1 ? $fetch : false;
-
     }
 }
