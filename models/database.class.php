@@ -1,7 +1,6 @@
 <?php
 
 class DataBase {
-
     public static function bdd() {
         $host   = "";
         $base   = "";
@@ -15,7 +14,6 @@ class DataBase {
         } catch (Exception $e) {
             die('Erreur : '. $e->getMessage());
         }
-
         return $bdd;
     }
 }
