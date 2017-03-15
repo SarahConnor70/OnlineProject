@@ -39,11 +39,10 @@ $(document).ready(function() {
                 data: "nomOnline=" + nomOnline + "&adresseOnline=" + adresseOnline + "&telephoneOnline=" + telephoneOnline,  // envoie les données du formulaire
                 dataType: 'json',
                 success: function(json){
-                    console.log(json);
                     if(json.reponse == 'ok'){
-                        faireNotif("Tout est ok!");
+                        faireNotif("json ok pour envoie des données");
                     } else {
-                        faireNotif("Un problème est survenu ...");
+                        faireNotif("Problème json pour envoie des données");
                     }
                 },
                 error: function(error) {
