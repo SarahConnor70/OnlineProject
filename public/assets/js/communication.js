@@ -26,9 +26,9 @@ $(document).ready(function() {
     //coordonnées
     $('#online').on('submit', function(e) {
         e.preventDefault();  // Le formulaire ne s'envoie pas
-        var nomOnline       = $('#nomOnline').html();
-        var adresseOnline   = $('#adresseOnline').html();
-        var telephoneOnline = $('#telephoneOnline').html();
+        var nomOnline       = entities($('#nomOnline').html());
+        var adresseOnline   = entities($('#adresseOnline').html());
+        var telephoneOnline = entities($('#telephoneOnline').html());
 
         if(nomOnline == "" || adresseOnline == '' || telephoneOnline == ''){
             alert('Les champs ne sont pas tous rempli');
@@ -36,7 +36,11 @@ $(document).ready(function() {
             $.ajax({
                 url: '/coordonnees',
                 type: 'POST',
-                data: "nomOnline=" + nomOnline + "&adresseOnline=" + adresseOnline + "&telephoneOnline=" + telephoneOnline,  // envoie les données du formulaire
+                data: {
+                    "nomOnline" : nomOnline,
+                    "adresseOnline": adresseOnline,
+                    "telephoneOnline": telephoneOnline
+                },
                 dataType: 'json',
                 success: function(json){
                     if(json.reponse == 'ok'){
@@ -51,6 +55,10 @@ $(document).ready(function() {
             });
         }
     });
+
+    function entities(word) {
+        return word.replace(/[^/\"_+-=a-zA-Z 0-9]+/g,'');
+    }
 
     function faireNotif(message, type) {
         noty({
