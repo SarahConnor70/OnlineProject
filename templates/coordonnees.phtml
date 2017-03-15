@@ -2,21 +2,20 @@
 {% block content %}
     <div class="row">
         <div class="col-md-offset-2 col-lg-8 col-md-12">
-            <div class="card">
+            <div class="card" style="text-align:center">
                 <div class="card-header" data-background-color="purple">
-                    <h3 class="title">Coordonnées</h3>
+                    <h4 class="title">Coordonnées</h4>
                     <p class="category">Retrouvez les informations de l'entreprise</p>
                 </div>
-                <form id="online" method="POST" action="/coordonnees">
+                <form method="POST" id="online" action="/coordonnees">
                     <div class="card-content">
-                        <div><img src="../assets/img/logo.png" alt="logo Onlineformapro"></div>
+                        <div><img src="../assets/img/logo.png" alt="logo Onlineformapro" style="width:300px" ></div>
                         <div id="nomOnline" contenteditable="true">{{nomOnline}}</div>
                         <div id="adresseOnline" contenteditable="true">{{adresseOnline}}</div>
                         <div id="telephoneOnline" contenteditable="true">{{telephoneOnline}}</div>
                     </div>
                     <div class="card-footer">
-                        <button id="maj" class="btn btn-primary">Mettre à jour</button>
-                        <button id="default" class="btn btn-primary">Valeur par défaut</button>
+                        <button id="maj" type="submit" class="btn btn-primary">Mettre à jour</button>
                     </div>
                 </form>
             </div>
