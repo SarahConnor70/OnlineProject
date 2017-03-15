@@ -39,4 +39,24 @@ $app->post('/coordonnees', function($request, $response){
 	echo json_encode(['reponse' => $reponse]);
 });
 
+$app->post('/formation', function($request, $response){
+
+    if(!empty($_POST['dateDebut']) && !empty($_POST['dateFin']) && !empty($_POST['placeRegion']) && !empty($_POST['placeSupp']) && !empty($_POST['intitule']) && !empty($_POST['titre'])){
+
+        $reponse='ok';
+        $formation = [];
+        $formation[0] = $_POST['dateDebut'];
+        $formation[1] = $_POST['dateFin'];
+        $formation[2] = $_POST['placeRegion'];
+        $formation[3] = $_POST['placeSupp'];
+        $formation[4] = $_POST['intitule'];
+        $formation[5] = $_POST['titre'];
+        ModelFormation::setFormation($formation);
+    }
+    else{
+        $reponse = "Les champs sont vides";
+    }
+    echo json_encode(['reponse' => $reponse]);
+});
+
 ?>
