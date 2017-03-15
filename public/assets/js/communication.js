@@ -4,7 +4,7 @@ $(document).ready(function() {
         var mail = $("#mail").val();
         var pass = $("#pass").val();
         if ((mail == "") || (pass == "")) {
-            faireNotif("Veuillez remplir les champs demandés.");
+            faireNotif("Veuillez remplir les champs demandés.", "error");
         } else {
             $.ajax({
                 url: '/',
@@ -17,7 +17,7 @@ $(document).ready(function() {
                     if (json["erreur"] == false) {
                         $(location).attr('href', '/dashboard');
                     } else {
-                        faireNotif(json["message"]);
+                        faireNotif(json["message"], "error");
                     }
                 }
             })
@@ -40,24 +40,24 @@ $(document).ready(function() {
                 dataType: 'json',
                 success: function(json){
                     if(json.reponse == 'ok'){
-                        faireNotif("json ok pour envoie des données");
+                        faireNotif("json ok pour envoie des données", "primary");
                     } else {
-                        faireNotif("Problème json pour envoie des données");
+                        faireNotif("Problème json pour envoie des données", "error");
                     }
                 },
                 error: function(error) {
-                    faireNotif("Un problème est survenu ...");
+                    faireNotif("Un problème est survenu ...", "error");
                 }
             });
         }
     });
 
-    function faireNotif(message) {
+    function faireNotif(message, type) {
         noty({
             text: message,
             dismissQueue: true,
             progressBar : true,
-            type: 'error',
+            type: type,
             theme : 'relax',
             animation: {
                 open: {height: 'toggle'},
