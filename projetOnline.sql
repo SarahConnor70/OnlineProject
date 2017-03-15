@@ -54,7 +54,9 @@ CREATE TABLE `formations` (
   `fin` datetime NOT NULL,
   `placeRegion` int(2) NOT NULL,
   `placeSupp` int(1) NOT NULL,
-  `intitule` varchar(100) NOT NULL
+  `intitule` varchar(100) NOT NULL,
+  `titre`varchar(150) NOT NULL,
+  `promo` varchar(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
