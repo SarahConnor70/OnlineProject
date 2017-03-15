@@ -4,45 +4,56 @@
     <div class="col-md-offset-2 col-lg-8 col-md-12">
         <div class="card">
             <div class="card-header" data-background-color="purple">
-                <h3 class="title">Créer une formation</h3>
+                <h4 class="title">Créer une formation</h4>
+                <p class="category">Créer une nouvelle formation via ce formulaire.</p>
             </div>
-            <div class="card-content col-md-offset-2 col-md-8">
-                <label style="display: block; width: 200px;float: left;margin-top: 5px;">Date de début</label>
-                <input type="text" id="dateDebut" name="dateDebut" style="width: 150px;border-left: none; border-top: none; border-right: none;">
+            <div class="col-md-offset-2 col-md-3">
+                <div class="form-group label-floating">
+                    <label>Date de début</label>
+                    <input type="text" id="dateDebut" class="form-control" >
+                </div>
             </div>
-
-            <div class="card-content col-md-offset-2 col-md-8">
-                <label style="display: block; width: 200px;float: left;margin-top: 5px;">Date de fin</label>
-                <input type="text" id="dateFin" name="dateFin" id="dateFin" style="width: 150px;border-left: none; border-top: none; border-right: none;">
+            <div class="col-md-offset-2 col-md-3">
+                <div class="form-group label-floating">
+                    <label>Date de fin</label>
+                    <input type="email" id="dateFin" class="form-control" >
+                </div>
             </div>
-
-            <div class="card-content col-md-offset-2 col-md-8">
-                <label style="display: block; width: 200px;float: left;margin-top: 5px;">Places de la Région</label>
-                <input type="text" name="placeRegion" id="placeRegion" style="width: 30px;border-left: none; border-top: none; border-right: none;">
+            <div class="col-md-offset-2 col-md-3">
+                <div class="form-group label-floating">
+                    <label>Places de la Région</label>
+                    <input type="text" id="placeRegion" class="form-control" >
+                </div>
             </div>
-
-            <div class="card-content col-md-offset-2 col-md-10">
-                <label style="display: block; width: 200px;float: left;margin-top: 5px;">Places supplémentaires</label>
-                <input type="text" name="placeSupp" id="placeSupp" style="width: 30px;border-left: none; border-top: none; border-right: none;">
+            <div class="col-md-offset-2 col-md-3">
+                <div class="form-group label-floating">
+                    <label>Places supplémentaires</label>
+                    <input type="email" id="placeSupp" class="form-control" >
+                </div>
             </div>
-
-            <div class="card-content col-md-offset-2 col-md-8">
-                <label style="display: block; width: 200px;float: left;margin-top: 5px;">Intitulé de la formation</label>
-                <input type="text" name="intitule" id="intitule" style="width: 200px; border-left: none; border-top: none; border-right: none;">
+            <div class="col-md-offset-2 col-md-3">
+                <div class="form-group label-floating">
+                    <label>Intitulé de la formation</label>
+                    <input type="text" id="intitule" class="form-control" >
+                </div>
             </div>
-
-            <div class="card-content col-md-offset-2 col-md-8">
-                <label style="display: block; width: 200px;float: left;margin-top: 5px;">Nom du titre</label>
-                <input type="text" name="titre" id="titre" style="width: 200px; border-left: none; border-top: none; border-right: none;">
+            <div class="col-md-offset-2 col-md-3">
+                <div class="form-group label-floating">
+                    <label>Nom du titre</label>
+                    <input type="email" id="titre" class="form-control" >
+                </div>
             </div>
-
-            <div class="card-content col-md-offset-2 col-md-8">
-                <label>Logos des financiers</label>
+            <div class="col-md-offset-5 col-md-8">
+                <div class="form-group label-floating">
+                    <label>Logos des financeurs</label>
+                    <div class="col-md-12"><img src="../assets/img/logoconseil.png " style="height: 85px;width: 70px;margin-bottom: 5px;" alt="logo Conseil regional"></div>
+                </div>
             </div>
-            <div class="col-md-12"><img src="../assets/img/logoconseil.png " style="height: 85px;width: 70px;margin-bottom: 5px;" alt="logo Conseil regional"></div>
-        </div>
-        <div class="card-footer">
-            <button id="maj" class="btn btn-primary">Mettre à jour</button>
+            <div class="col-md-offset-5 col-md-8">
+                <div class="form-group label-floating">
+                    <button id="maj" class="btn btn-primary">Mettre à jour</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
