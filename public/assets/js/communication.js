@@ -1,8 +1,8 @@
 $(document).ready(function() {
     // connexion
     $("#connexion").on('click', function() {
-        var mail = $("#mail").val();
-        var pass = $("#pass").val();
+        var mail = entities($("#mail").val());
+        var pass = entities($("#pass").val());
         if ((mail == "") || (pass == "")) {
             faireNotif("Veuillez remplir les champs demandés.", "error");
         } else {
