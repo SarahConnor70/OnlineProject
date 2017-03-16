@@ -1,8 +1,8 @@
 $(document).ready(function() {
     // connexion
     $("#connexion").on('click', function() {
-        var mail = entities($("#mail").val());
-        var pass = entities($("#pass").val());
+        var mail = $("#mail").val();
+        var pass = $("#pass").val();
         if ((mail == "") || (pass == "")) {
             faireNotif("Veuillez remplir les champs demandés.", "error");
         } else {
@@ -23,7 +23,7 @@ $(document).ready(function() {
             })
         }
     });
-    
+
     //formation
     $('#maj').on('click', function (e){
         e.preventDefault();
@@ -35,35 +35,34 @@ $(document).ready(function() {
         var titre       = $('#titre').val();
 
         // Récupère l'année de début et de fin
-        var annee1 = debut.split("-");
-        var annee2 = fin.split("-");
+        var annee1 = debut.split("/");
+        var annee2 = fin.split("/");
         var promo;
 
         // Si l'année est la même la promo est l'année de début
-        if(annee1[0] == annee2[0]){
-            promo = annee1[0];
-        }
+        promo = annee1[2] == annee2[2] ? annee1[2] : annee1[2] + " " + annee2[2];
 
-        // Sinon la promo est année1 année2
-        else{
-            promo = annee1[0] + " " + annee2[0];
-        }
-
-        if(debut == '' || fin == '' || placeRegion == '' || placeSupp == '' || intitule == '' || titre == ''){
+        if (debut == '' || fin == '' || placeRegion == '' || placeSupp == '' || intitule == '' || titre == '') {
             alert('Les champs ne sont pas tous rempli');
-        }
-        else{
+        } else {
             $.ajax({
                 url :'/formation',
                 type: 'POST',
-                data: "dateDebut=" + debut + "&dateFin=" + fin + "&placeRegion=" + placeRegion + "&placeSupp=" + placeSupp + "&intitule=" + intitule + "&titre=" + titre + "&promo=" + promo,
+                data: {
+                    "dateDebut": debut,
+                    "dateFin": fin,
+                    "placeRegion": placeRegion,
+                    "placeSupp": placeSupp,
+                    "intitule": intitule,
+                    "titre": titre,
+                    "promo": promo
+                },
                 dateType: 'json',
                 success: function(json){
                     var jsons = JSON.parse(json);
                     if(jsons.reponse == 'ok'){
                         faireNotif("json ok pour envoie des données", "primary");
-                    }
-                    else{
+                    } else {
                         faireNotif("Problème json pour envoie des données", "error");
                     }
                 },
@@ -73,7 +72,6 @@ $(document).ready(function() {
             });
         }
     });
-    
     //coordonnées
     $('#online').on('submit', function(e) {
         e.preventDefault();  // Le formulaire ne s'envoie pas
