@@ -9,7 +9,7 @@
             <table class="table table-hover">
                 <div class="row">
                     <div class="col s12">
-                        <form method="post">
+                        <form>
                             <p>
                                 <input type="radio" name="accepter" value="accepte" id="accepte"/>
                                 <label for="accepte" style="margin-right:15px">Accepté</label>
@@ -24,68 +24,78 @@
                                 <li class="tab col s3"><a href="#test3">Stages</a></li>
                                 <li class="tab col s3"><a href="#test4">Dates de visite</a></li>
                             </ul>
-
                             <!-- Personnes -->
                             <div id="test1" class="col s12">
-                                <div class="col-md-offset-2 col-md-3">
+                                <div class="col-md-offset-2 col m3">
                                     <label for="nomStagiaire">Nom:</label>
                                     <input type="text" id="nomStagiaire" class="form-control">
                                 </div>
-                                <div class="col-md-offset-2 col-md-3">
+                                <div class="col-md-offset-2 col m3">
                                     <label for="prenomStagiaire">Prenom:</label>
                                     <input type="text" id="prenomStagiaire" class="form-control">
                                 </div>
-                                <div class="col-md-offset-2 col-md-3">
+                                <div class="col-md-offset-2 col m3">
                                     <label for="telephoneStagiaire">Téléphone:</label>
                                     <input type="text" id="telephoneStagiaire" class="form-control">
                                 </div>
-                                <div class="col-md-offset-2 col-md-3">
+                                <div class="col-md-offset-2 col m3">
                                     <label for="mailStagiaire">Mail:</label>
                                     <input type="text" id="mailStagiaire" class="form-control">
                                 </div>
-                                <div class="col-md-offset-2 col-md-3">
+                                <div class="col-md-offset-2 col m3">
                                     <label for="adresseStagiaire">Adresse:</label>
                                     <input type="text" id="adresseStagiaire" class="form-control">
                                 </div>
-                                <div class="col-md-offset-2 col-md-3">
+                                <div class="col-md-offset-2 col m3">
                                     <label for="cpStagiaire">CP:</label>
                                     <input type="text" id="cpStagiaire" class="form-control">
                                 </div>
-                                <div class="col-md-offset-2 col-md-3">
+                                <div class="col-md-offset-2 col m3">
                                     <label for="villeStagiaire">Ville:</label>
                                     <input type="text" id="villeStagiaire" class="form-control">
                                 </div>
                             </div>
 
-                            <!-- Visites -->
-                            <div id="test4" class="col s12">
-                                <div id="jVisite" name="jVisite" contenteditable="true">Jour de visite</div>
-                                <div id="hVisite" name="hVisite" contenteditable="true">Heure de visite</div>
-                                <div id="tuteur" name="tuteur" contenteditable="true">Nom du tuteur</div>
-                                <div id="tel" name="tel" contenteditable="true">Telephone</div>
-                                <div id="mail" name="mail" contenteditable="true">Mail</div>
-                            </div>
+                            <!-- Resultat des tests -->
+                            <div id="test2" class="col s12"></div>
 
                             <!-- Stages -->
                             <div id="test3" class="col s12">
-
-                                <input type="checkbox" checked="checked" />
-                                <label>Yellow</label>
-                                <input type="checkbox"  checked="checked" />
-                                <label>Yellow</label>
-                                <input type="checkbox"  checked="checked" />
-                                <label >Yellow</label>
-
-
+                                 <div class="col-md-offset-2 col m3">
+                                    <label for="nomEntreprise">Entreprise:</label>
+                                    <input type="text" id="nomEntreprise" class="form-control">
+                                </div>
+                                <div class="col-md-offset-2 col m3">
+                                    <label for="adresseEntreprise">Adresse:</label>
+                                    <input type="text" id="adresseEntreprise" class="form-control">
+                                </div>
+                                <div class="col-md-offset-2 col m3">
+                                    <label for="telephoneEntreprise">Téléphone:</label>
+                                    <input type="text" id="telephoneEntreprise" class="form-control">
+                                </div>
+                                <div class="col-md-offset-2 col m3">
+                                    <label for="nomTuteur">Tuteur:</label>
+                                    <input type="text" id="nomTuteur" class="form-control">
+                                </div>
                             </div>
 
-                            <!-- Resultat des tests -->
-                            <div id="test2" class="col s12"></div>
+                            <!-- Visites -->
+                            <div id="test4" class="col s12">
+                                <div class="col-md-offset-2 col m3">
+                                    <label for="jourVisite">Jour de la visite:</label>
+                                    <input type="text" id="jourVisite" class="form-control">
+                                </div>
+                                <div class="col-md-offset-2 col m3">
+                                    <label for="heureVisite">Heure du rendez-vous:</label>
+                                    <input type="text" id="heureVisite" class="form-control">
+                                </div>
+                            </div>
+
                             <div style="text-align: center">
-                                <button type="submit" class="btn btn-primary">Créer</button>
+                                <button type="submit" class="btn btn-primary">Ajouter</button>
+                                <button type="submit" class="btn btn-primary">Modifier</button>
                             </div>
-                        </form>                    
-
+                        </form>
                     </div>
                 </div>
             </table>
