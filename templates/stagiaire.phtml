@@ -1,58 +1,63 @@
 {% extends 'layout/layout.html' %}
 {% block content %}
-<div class="col-md-offset-3 col-lg-6 col-md-12">
+<div class="col-md-offset-2 col-lg-8 col-md-12">
     <div class="card">
         <div class="card-header" data-background-color="purple">
-            <h3 class="title">Liste des stagiaires de la formation en cours</h3>
+            <h4 class="title">Liste des stagiaires de la formation en cours</h4>
         </div>
         <div class="card-content table-responsive">
 			<table class="table table-hover">
-                <thead class="text-warning" style="color:orange;">
-                <th>Stagiaire</th>
-                <th>Resultat Test</th>
-                <th>Stage</th>
-                <th>Date de visite de stage</th>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><div id="nom" name="nom" contenteditable="true">Nom</div></td>
-                    <td></td>
-                    <td></td>
-                    <td><div id="jour" name="jour" contenteditable="true">Jour</div></td>
-                </tr>
-                <tr>
-                	<td><div id="prenom" name="prenom" contenteditable="true">Prenom</div></td>
-                	<td></td>
-                    <td></td>
-                    <td><div id="heure" name="heure" contenteditable="true">Heure</div></td>
-                </tr>
-                <tr>
-                    <td><div id="ville" name="ville" contenteditable="true">Ville</div></td>
-                    <td></td>
-                    <td></td>
-                    <td><div id="tuteur" name="tuteur" contenteditable="true">Tuteur</div></td>
-                </tr>
-                <tr>
-                	<td><div id="mailStagiaire" name="mailStagiaire" contenteditable="true">Mail</div></td>
-                	<td></td>
-                    <td></td>
-                    <td><div id="telephoneStagiaire" name="telephoneStagiaire" contenteditable="true">Téléphone</div></td>
-                </tr>
-                <tr>
-                	<td><div id="cp" name="cp" contenteditable="true">CP</div></td>
-                	<td></td>
-                    <td></td>
-                    <td><div id="mailStage" name="mailStage" contenteditable="true">Mail</div></td>
-                </tr>
-                <tr>
-                	<td><div id="telephoneStage" name="telephoneStage" contenteditable="true">Téléphone</div></td>
-                	<td></td>
-                	<td></td>
-                	<td></td>
-                </tr>
-                </tbody>
+                <div class="row">
+                    <div class="col s12">
+                        <ul class="tabs">
+                            <li class="tab col s3"><a href="#test1">Personnes</a></li>
+                            <li class="tab col s3"><a href="#test2">Résultats des tests</a></li>
+                            <li class="tab col s3"><a href="#test3">Stages</a></li>
+                            <li class="tab col s3"><a href="#test4">Dates de visite des stages</a></li>
+                        </ul>
+            
+                        <!-- Personnes -->
+                        <div id="test1" class="col s12">
+                            <div id="nom" name="nom" contenteditable="true">Nom</div>
+                            <div id="prenom" name="prenom" contenteditable="true">Prenom</div>
+                            <div id="telephoneStagiaire" name="telephoneStagiaire" contenteditable="true">Telephone</div>
+                            <div id="mailStagiaire" name="mailStagiaire" contenteditable="true">Mail</div>
+                            <div id="cp" name="cp" contenteditable="true">CP</div>
+                            <div id="ville" name="ville" contenteditable="true">Ville</div>
+                        </div>
+
+                        <!-- Visites -->
+                        <div id="test4" class="col s12">
+                            <div id="jVisite" name="jVisite" contenteditable="true">Jour de visite</div>
+                            <div id="hVisite" name="hVisite" contenteditable="true">Heure de visite</div>
+                            <div id="tuteur" name="tuteur" contenteditable="true">Nom du tuteur</div>
+                            <div id="tel" name="tel" contenteditable="true">Telephone</div>
+                            <div id="mail" name="mail" contenteditable="true">Mail</div>
+                        </div>
+
+                        <!-- Stages -->
+                        <div id="test3" class="col s12">
+
+                            <input type="checkbox" checked="checked" />
+                            <label>Yellow</label>
+                            <input type="checkbox"  checked="checked" />
+                            <label>Yellow</label>
+                            <input type="checkbox"  checked="checked" />
+                            <label >Yellow</label>
+
+                            
+                        </div>
+
+                        <!-- Resultat des tests -->
+                        <div id="test2" class="col s12">
+                            
+
+                        </div>
+                    </div>
+                </div>
             </table>
         </div>
-	</div>
+    </div>
 </div>
+
 {% endblock %}
