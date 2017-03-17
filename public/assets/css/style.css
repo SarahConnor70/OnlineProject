@@ -1,0 +1,15 @@
+label
+{
+    display:block; 
+    width:150px; /* Attention : prenez une largeur suffisamment grande */
+    float:left;
+}
+
+input
+{
+    display:block; 
+    width:150px; 
+    text-align: center;
+    padding-right: 15pX;
+
+}
