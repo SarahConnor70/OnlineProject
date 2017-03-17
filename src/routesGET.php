@@ -4,7 +4,9 @@ $app->get('/', function ($request, $response, $args) {
     if (!login::VerifSession()) {
         return $this->view->render($response, "index.phtml");
     } else {
-        return $this->view->render($response, 'dashboard.phtml');
+        return $this->view->render($response, 'dashboard.phtml', [
+            "dashboard" => true
+        ]);
     }
 });
 
