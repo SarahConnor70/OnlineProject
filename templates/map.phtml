@@ -1,26 +1,26 @@
  <!DOCTYPE html>
-<html>
-<body>
+ <html>
+ <body>
 
-<h1>My First Google Map</h1>
+ 	<h1>My First Google Map</h1>
 
-<div id="googleMap" style="width:50%;height:200px;"></div>
+ 	<div id="googleMap" style="width:50%;height:200px;"></div>
 
-<script>
-function myMap() {
-var mapProp= {
-    center:new google.maps.LatLng(47.63771,6.15067 ),
-    zoom:15,
-};
-var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-}
-</script>
+ 	<script>
+ 		function myMap() {
+ 			var mapProp= {
+ 				center:new google.maps.LatLng(47.63771,6.15067 ),
+ 				zoom:15,
+ 			};
+ 			var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+ 		}
+ 	</script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMNHNUUq__EVRbC45mTLCsD1H7d0M4P08 &callback=myMap&language=fr"></script>
+ 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMNHNUUq__EVRbC45mTLCsD1H7d0M4P08 &callback=myMap&language=fr"></script>
 
-<script>$.ajax({
-                    url: "https://maps.googleapis.com/maps/api/directions/json?origin=Vesoul OnlineFormaPro&destination=&key=AIzaSyDMNHNUUq__EVRbC45mTLCsD1H7d0M4P08 ",
-                    success: function(result){}});
-</script>
-</body>
-</html> 
+ 	<script>$.ajax({
+ 		url: "https://maps.googleapis.com/maps/api/directions/json?origin=Vesoul OnlineFormaPro&destination=&key=AIzaSyDMNHNUUq__EVRbC45mTLCsD1H7d0M4P08 ",
+ 		success: function(result){}});
+ 	</script>
+ </body>
+ </html> 
