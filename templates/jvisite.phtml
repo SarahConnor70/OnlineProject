@@ -1,9 +1,9 @@
 {% extends 'layout/layout.html' %}
 {% block content %}
 <div class="col-md-offset-3 col-lg-6 col-md-12">
-  <div id="map">
+  <div id="map" style="height: 300px">
             <p>Veuillez patienter pendant le chargement de la carte...</p>
-        </div>
+    </div>
     <div class="card">
         <div class="card-header" data-background-color="purple">
             <h3 class="title">Jours de visite</h3>
@@ -36,6 +36,7 @@
             </form>
         </div>
         <div id="panel"></div>
+
       
 	</div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMNHNUUq__EVRbC45mTLCsD1H7d0M4P08 &callback=myMap&language=fr"></script>
