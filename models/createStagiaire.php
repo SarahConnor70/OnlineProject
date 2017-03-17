@@ -1,6 +1,6 @@
 <?php
-
 class Stagiaire {
+
     // Inserer un nouveau stagiaire
     public static function insertStagiaire($stagiaire) {
         $query      = "INSERT INTO stagiaires (nom, prenom, adresse, cp, ville, mail, telephone, promo, accepter) VALUES(:nom, :prenom, :adresse, :cp, :ville, :mail, :telephone, :promo, :accepter)";
@@ -17,11 +17,34 @@ class Stagiaire {
         $execute->bindParam(':promo', $promo);
         return $execute->execute();
     }
+
     // Recuperer un stagiare depuis la base de données
-    public static function RecupStagiaire($id){
-        $query  = DataBase::bdd()->prepare("SELECT * from stagiaires ORDER by id DESC");
+    public static function recupStagiaire(){
+        $query  = DataBase::bdd()->prepare("SELECT * from stagiaires WHERE promo = :promo ORDER by id DESC");
+        $query->bindParam(":promo", ModelFormation::getLastPromo());
         $query->execute();
         $fetch  = $query->fetchAll();
         return sizeof($fetch) > 1 ? $fetch : false;
     }
+
+    public static function modifStagiaire(){
+        $query  = "UPDATE stagiaires SET cp = :cp,
+                                         ville = :ville,
+                                         mail = :mail,
+                                         telephone = :telephone,
+                                         promo = :promo,
+                                         accepter = :accepter
+                       WHERE nom = :nom AND prenom = :prenom";
+
+        $execute = DataBase::bdd()->prepapre($query);
+        $execute->bindParam(':cp', $cp);
+        $execute->bindParam(':ville', $ville);
+        $execute->bindParam(':mail', $email);
+        $execute->bindParam(':telephone', $telephone);
+        $execute->bindParam(':promo', $promo);
+        $execute->bindParam(':accepter', $accepter);
+        return $execute->execute();
+    }
 }
+
+?>
