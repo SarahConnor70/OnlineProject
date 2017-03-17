@@ -87,6 +87,7 @@ CREATE TABLE `stagiaires` (
   `id` int(11) NOT NULL,
   `nom` varchar(50) NOT NULL,
   `prenom` varchar(50) NOT NULL,
+  `adresse` varchar(150) NOT NULL,
   `cp` int(5) NOT NULL,
   `ville` varchar(50) NOT NULL,
   `mail` varchar(100) NOT NULL,
