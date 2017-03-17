@@ -27,16 +27,15 @@ $(document).ready(function() {
     //Créer un stagiaire
     $('#ajouter').on('click', function(e){
         e.preventDefault();
-        var nomStagiaire = $('#nomStagiaire').val();
-        var prenomStagiaire = $('#prenomStagiaire').val();
-        var telephoneStagiaire = $('#telephoneStagiaire').val();
-        var mailStagiaire = $('#mailStagiaire').val();
-        var adresseStagiaire = $('#adresseStagiaire').val();
-        var cpStagiaire = $('#cpStagiaire').val();
-        var villeStagiaire = $('#villeStagiaire').val();
+        var nomStagiaire        = $('#nomStagiaire').val();
+        var prenomStagiaire     = $('#prenomStagiaire').val();
+        var telephoneStagiaire  = $('#telephoneStagiaire').val();
+        var mailStagiaire       = $('#mailStagiaire').val();
+        var adresseStagiaire    = $('#adresseStagiaire').val();
+        var cpStagiaire         = $('#cpStagiaire').val();
+        var villeStagiaire      = $('#villeStagiaire').val();
 
-        if(nomStagiaire != '' || prenomStagiaire != '' || telephoneStagiaire != '' ||
-         mailStagiaire != '' || adresseStagiaire != '' || cpStagiaire != '' || villeStagiaire != ''){
+        if(nomStagiaire != '' || prenomStagiaire != '' || telephoneStagiaire != '' ||  mailStagiaire != '' || adresseStagiaire != '' || cpStagiaire != '' || villeStagiaire != ''){
             $.ajax({
                 url:'/stagiaire',
                 type: 'POST',
@@ -47,16 +46,16 @@ $(document).ready(function() {
                     "mailStagiaire": mailStagiaire,
                     "adresseStagiaire": adresseStagiaire,
                     "cpStagiaire": cpStagiaire,
-                    "villeStagiaire": villeStagiaire,
+                    "villeStagiaire": villeStagiaire
                 },
                 success: function(json){
                     if(json.reponse == 'ok') {
-                        faireNotif('json ok pour envoie des données', 'primary');
+                        faireNotif('Le stagiaire a bien été enregistré!', 'primary');
                     } else {
-                        faireNotif('erreur lors de l\'envoi des données', 'error');
+                        faireNotif('Echec lors de l\'ajout du stagiaire.', 'error');
                     }
                 },
-                error: function(json) {
+                error: function() {
                     faireNotif('Erreur..', 'error');
                 }
             });
@@ -74,24 +73,16 @@ $(document).ready(function() {
         var titre       = $('#titre').val();
 
         // Récupère l'année de début et de fin
-        var annee1 = debut.split("-");
-        var annee2 = fin.split("-");
+        var annee1 = debut.split("/");
+        var annee2 = fin.split("/");
         var promo;
 
         // Si l'année est la même la promo est l'année de début
-        if(annee1[0] == annee2[0]){
-            promo = annee1[0];
-        }
+        promo   = annee1[2] == annee2[2] ? annee1[2] : annee1[2] + " " + annee2[2];
 
-        // Sinon la promo est année1 année2
-        else{
-            promo = annee1[0] + " " + annee2[0];
-        }
-
-        if(debut == '' || fin == '' || placeRegion == '' || placeSupp == '' || intitule == '' || titre == ''){
-            alert('Les champs ne sont pas tous rempli');
-        }
-        else{
+        if(debut == '' || fin == '' || placeRegion == '' || placeSupp == '' || intitule == '' || titre == '') {
+            faireNotif("Tous les champs ne sont pas remplis.")
+        } else {
             $.ajax({
                 url :'/formation',
                 type: 'POST',
@@ -107,10 +98,9 @@ $(document).ready(function() {
                 success: function(json){
                     var jsons = JSON.parse(json);
                     if(jsons.reponse == 'ok'){
-                        faireNotif("json ok pour envoie des données", "primary");
-                    }
-                    else{
-                        faireNotif("Problème json pour envoie des données", "error");
+                        faireNotif("La formation ''" + entities(intitule) + "'' a bien été ajouté.", "primary");
+                    } else {
+                        faireNotif("Erreur lors de l'ajout de la formation.", "error");
                     }
                 },
                 error: function(error){
@@ -128,18 +118,22 @@ $(document).ready(function() {
         var telephoneOnline = $('#telephoneOnline').html();
 
         if(nomOnline == "" || adresseOnline == '' || telephoneOnline == ''){
-            alert('Les champs ne sont pas tous rempli');
+            faireNotif("Tous les champs ne sont pas remplis.")
         } else {
             $.ajax({
                 url : '/coordonnees',
                 type: 'POST',
-                data: "nomOnline=" + nomOnline + "&adresseOnline=" + adresseOnline + "&telephoneOnline=" + telephoneOnline,  // envoie les données du formulaire
-                dataType: 'json',
+                data: {
+                    "nomOnline": nomOnline,
+                    "adresseOnline": adresseOnline,
+                    "telephoneOnline": telephoneOnline,
+                },
                 success: function(json){
-                    if(json.reponse == 'ok'){
-                        faireNotif("json ok pour envoie des données", "primary");
+                    var jsons = JSON.parse(json);
+                    if(jsons.reponse == 'ok'){
+                        faireNotif("Les coordonnées ont bien été sauvegardées.", "primary");
                     } else {
-                        faireNotif("Problème json pour envoie des données", "error");
+                        faireNotif("Erreur lors du changement des coordonnées.", "error");
                     }
                 },
                 error: function(error) {
