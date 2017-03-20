@@ -41,6 +41,37 @@ $app->post('/coordonnees', function($request, $response){
     return $response->withJson(["reponse" => $reponse], 200, JSON_PRETTY_PRINT);
 });
 
+$app->post('/stagiaire', function($request, $response)
+{
+    if(!empty($_POST['date']) && !empty($_POST['connuFormation']) && !empty($_POST['age']) && !empty($_POST['prescription']) && !empty($_POST['status']) && !empty($_POST['prescripteur']) && !empty($_POST['contreIndic']) && !empty($_POST['commentaire']) && !empty($_POST['resultatNiveau']) && !empty($_POST['resultatFormation']) && !empty($_POST['resultatExperience']) && !empty($_POST['pointNiveau']) && !empty($_POST['pointFormation']) && !empty($_POST['pointExperience']) && !empty($_POST['commentaire1'])){
+
+        $reponse='ok';
+        $resultatTest=[];
+        $resultatTest[0]= $_POST['date'];
+        $resultatTest[1]= $_POST['connuFormation'];
+        $resultatTest[2]= $_POST['age'];
+        $resultatTest[3]= $_POST['prescription'];
+        $resultatTest[4]= $_POST['status'];
+        $resultatTest[5]= $_POST['prescripteur'];
+        $resultatTest[6]= $_POST['contreIndic'];
+        $resultatTest[7]= $_POST['commentaire'];
+        $resultatTest[8]= $_POST['resultatNiveau'];
+        $resultatTest[9]= $_POST['resultatFormation'];
+        $resultatTest[10]= $_POST['resultatExperience'];
+        $resultatTest[11]= $_POST['pointNiveau'];
+        $resultatTest[12]= $_POST['pointFormation'];
+        $resultatTest[13]= $_POST['pointExperience'];
+        $resultatTest[14]= $_POST['commentaire1'];
+
+        Stagiaire::InsertResultat($resultatTest);
+    }
+    else{
+       $reponse = "Les champs sont vides";
+    }
+    echo json_encode(['reponse' => $reponse]);
+
+});
+
 $app->post('/formation', function($request, $response){
     if(!empty($_POST['dateDebut']) && !empty($_POST['dateFin']) && !empty($_POST['placeRegion']) && !empty($_POST['placeSupp']) && !empty($_POST['intitule']) && !empty($_POST['titre'])){
         $reponse	= 'ok';
