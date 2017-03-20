@@ -27,6 +27,30 @@ class Stagiaire {
         $fetch  = $query->fetchAll();
         return sizeof($fetch) > 1 ? $fetch : false;
     }
+     // Inserer un resultat de test
+    public static function InsertResultat($resultat){
+        $query      = "INSERT INTO resultatTest (dates, connuFormation, age, prescription, status, prescripteur, contreIndic, commentaire, resultatNiveau, resultatFormation, resultatExperience, pointNiveau, pointFormation, pointExperience, commentaire1,) VALUES(:dates, :connuFormation, :age, :prescription, :status, :prescripteur, :contreIndic, :commentaire, :resultatNiveau, :resultatFormation, :resultatExperience, :pointNiveau, :pointFormation, :pointExperience, :commentaire1)";
+
+        $execute    = DataBase::bdd()->prepare($query);
+        $execute->bindParam(':dates', $resultat[0]);
+        $execute->bindParam(':connuFormation', $resultat[1]);
+        $execute->bindParam(':age', $resultat[2]);
+        $execute->bindParam(':prescription', $resultat[3]);
+        $execute->bindParam(':status', $resultat[4]);
+        $execute->bindParam(':prescripteur', $resultat[5]);
+        $execute->bindParam(':contreIndic', $resultat[6]);
+        $execute->bindParam(':commentaire', $resultat[7]);
+        $execute->bindParam(':resultatNiveau', $resultat[8]);
+        $execute->bindParam(':resultatFormation', $resultat[9]);
+        $execute->bindParam(':resultatExperience', $resultat[10]);
+        $execute->bindParam(':pointNiveau', $resultat[11]);
+        $execute->bindParam(':pointFormation', $resultat[12]);
+        $execute->bindParam(':pointExperience', $resultat[13]);
+        $execute->bindParam(':commentaire1', $resultat[14]);
+        $execute->execute();
+
+
+    }
 
     public static function modifStagiaire(){
         $query  = "UPDATE stagiaires SET cp = :cp,
