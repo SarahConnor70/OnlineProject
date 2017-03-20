@@ -26,6 +26,62 @@ $(document).ready(function() {
         }
     });
 
+    //Resultats des tests
+    $('#ajouterResultat').on('click', function(e){
+        e.preventDefault();
+        var date               = $('#date').val();
+        var connuFormation     = $('#connuFormation').val();
+        var age                = $('#age').val();
+        var prescription       = $('#prescription').val();
+        var status             = $('#status').val();
+        var prescripteur       = $('#prescripteur').val();
+        var contreIndic        = $('#contreIndic').val();
+        var commentaire        = $('#commentaire').val();
+        var resultatNiveau     = $('#resultatNiveau').val();
+        var resultatFormation  = $('#resultatFormation').val();
+        var resultatExperience = $('#resultatExperience').val();
+        var pointNiveau        = $('#pointNiveau').val();
+        var pointFormation     = $('#pointFormation').val();
+        var pointExperience    = $('#pointExperience').val();
+        var commentaire1       = $('#commentaire1').val();
+
+        if (date!='' || connuFormation!='' || age!='' || prescription!='' || status!='' || prescripteur!='' || contreIndic!='' || commentaire!='' 
+            || resultatNiveau!='' || resultatFormation!='' || resultatExperience!='' || pointNiveau!='' || pointFormation!='' || pointExperience!='' || commentaire1!='') {
+            $.ajax({
+            url:'/stagiaire',
+            type: 'POST',
+            data: {
+                "date"              : date,
+                "connuFormation"    : connuFormation,
+                "age"               : age,
+                "prescription"      : prescription,
+                "status"            : status,
+                "prescripteur"      : prescripteur,
+                "contreIndic"       : contreIndic,
+                "commentaire"       : commentaire,
+                "resultatNiveau"    : resultatNiveau,
+                "resultatFormation" : resultatFormation,
+                "resultatExperience": resultatExperience,
+                "pointNiveau"       : pointNiveau,
+                "pointFormation"    : pointFormation,
+                "pointExperience"   : pointExperience,
+                "commentaire1"      : commentaire1,
+            },
+            success: function(json){
+                var jsons = JSON.parse(json);
+                if(jsons.reponse == 'ok') {
+                    faireNotif('Les résultats du stagiaire ont bien été enregistrés!', 'success');
+                } else {
+                    faireNotif('Echec lors de l\'ajout des résultats.', 'error');
+                }
+            },
+            error: function() {
+                faireNotif('Erreur..', 'error');
+                }
+            });
+        }
+    });
+    
     //Créer un stagiaire
     $('#ajouter').on('click', function(e){
         e.preventDefault();
