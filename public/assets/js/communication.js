@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    // load stages
+    loadStagiaire();
     // connexion
     $("#connexion").on('click', function() {
         var mail = $("#mail").val();
@@ -96,8 +98,7 @@ $(document).ready(function() {
                     "promo": promo
                 },
                 success: function(json){
-                    var jsons = JSON.parse(json);
-                    if(jsons.reponse == 'ok'){
+                    if(json.reponse == 'ok'){
                         faireNotif("La formation ''" + entities(intitule) + "'' a bien été ajouté.", "primary");
                     } else {
                         faireNotif("Erreur lors de l'ajout de la formation.", "error");
@@ -129,8 +130,7 @@ $(document).ready(function() {
                     "telephoneOnline": telephoneOnline,
                 },
                 success: function(json){
-                    var jsons = JSON.parse(json);
-                    if(jsons.reponse == 'ok'){
+                    if(json.reponse == 'ok'){
                         faireNotif("Les coordonnées ont bien été sauvegardées.", "primary");
                     } else {
                         faireNotif("Erreur lors du changement des coordonnées.", "error");
@@ -145,6 +145,31 @@ $(document).ready(function() {
 
     function entities(word) {
         return word.replace(/[^/\"_+-=a-zA-Z 0-9]+/g,'');
+    }
+
+    function loadStagiaire() {
+        $.ajax({
+            url: '/dashboard',
+            method: 'POST',
+            success: function(json) {
+                if (json == "") {
+                    $("#stage").html("Pas de stagiaire");
+                } else {
+                    var ls = '';
+                    for (var i = 0; i < json.length; i++) {
+                        ls += '<tr>';
+                        ls += '<td>' + json[i]["nom"] + '</td>';
+                        ls += '<td>' + json[i]["prenom"] + '</td>';
+                        ls += '<td>' + json[i]["mail"] + '</td>';
+                        ls += '<td>' + json[i]["telephone"] + '</td>';
+                        ls += '<td>' + json[i]["cp"] + '</td>';
+                        ls += '<td>' + json[i]["ville"] + '</td>';
+                        ls += '</tr>';
+                        $("#stage").html(ls);
+                    }
+                }
+            }
+        });
     }
 
     function faireNotif(message, type) {
