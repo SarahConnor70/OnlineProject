@@ -9,7 +9,7 @@
             <table class="table table-hover">
                 <div class="row">
                     <div class="col s12">
-                        <form>
+                        <form method="POST">
                             <p>
                                 <input type="radio" name="accepter" value="accepte" id="accepte"/>
                                 <label for="accepte" style="margin-right:15px">Accepté</label>
@@ -56,86 +56,72 @@
                                 </div>
                             </div>
 
+
+
                             <!-- Resultat des tests -->
                             <div id="test2" class="col s12">
                                 <div class="row">
                                     <div class="col-md-offset-2 col m3">
-                                        <label for="nom">Nom:</label>
-                                        <input type="text" id="nom" class="form-control">
-                                    </div>
-                                    <div class="col-md-offset-2 col m3">
-                                        <label for="prenom">Prenom:</label>
-                                        <input type="text" id="prenom" class="form-control">
-                                    </div>
-                                    <div class="col-md-offset-2 col m3">
                                         <label for="date">Date:</label>
-                                        <input type="text" id="date" class="form-control">
+                                        <input type="text" id="date" name="date" class="form-control">
                                     </div>
                                     <div class="col-md-offset-2 col m3">
                                         <label for="connuFormation">A connu la formation par:</label>
-                                        <input type="text" id="connuFormation" class="form-control">
+                                        <input type="text" id="connuFormation" name="connuFormation" class="form-control">
                                     </div>
                                     <div class="col-md-offset-2 col m3">
                                         <label for="age">Age:</label>
-                                        <input type="text" id="age" class="form-control">
+                                        <input type="text" id="age" name="age" class="form-control">
                                     </div>
                                     <div class="col-md-offset-2 col m3">
                                         <label for="prescription">Prescription:</label>
-                                        <input type="text" id="prescription" class="form-control">
+                                        <input type="text" id="prescription" name="prescription" class="form-control">
                                     </div>
                                     <div class="col-md-offset-2 col m3">
                                         <label for="status">Status:</label>
-                                        <input type="text" id="status" class="form-control">
+                                        <input type="text" id="status" name="status" class="form-control">
                                     </div>
                                           <div class="col-md-offset-2 col m3">
                                         <label for="prescripteur">Prescripteur:</label>
-                                        <input type="text" id="prescripteur" class="form-control">
+                                        <input type="text" id="prescripteur" name="prescripteur" class="form-control">
                                     </div>
                                     <div class="col-md-offset-2 col m3">
                                         <label for="contreIndic">Contre indications:</label>
-                                        <input type="text" id="contreIndic" class="form-control">
+                                        <input type="text" id="contreIndic" name="contreIndic" class="form-control">
                                     </div>
                                     <div class="col-md-offset-2 col m3">
                                         <label for="commentaire">Commentaire:</label>
-                                        <input type="text" id="commentaire" class="form-control">
+                                        <input type="text" id="commentaire" name="commentaire" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="row">
                                         <div class="col-md-3">
                                             <p style="font-weight: bold;">Pré-requis</p>
-                                            <label for="nivFormation" style="margin-bottom: 0;">Niveau formation:</label>
-                                            <input type="text" id="nivFormation" class="form-control">
-
-                                            <label for="formation" style="margin-bottom: 0;">Formation dans le secteur:</label>
-                                            <input type="text" id="formation" class="form-control">
-
-                                            <label for="experience" style="margin-bottom: 0;">Expérience professionnelle:</label>
-                                            <input type="text" id="experience" class="form-control">
-
+                                            <label for="nivFormation" style="padding-left: 25px;margin-bottom: 22px;margin-top: 25px;">Niveau formation:</label><label for="formation" style="padding-left: 25px;margin-bottom: 15px;margin-top: 18px;">Formation dans le secteur:</label><label for="experience" style="padding-left: 25px;margin-top:25px;margin-bottom: 22px;">Expérience professionnelle:</label>
                                         </div>
                                          <div class="col-md-3">
                                             <p style="font-weight: bold;">Résultats oui/non</p>
                                             <label for="resultatNiveau"></label>
-                                            <input type="text" id="resultatNiveau" class="form-control">
+                                            <input type="text" id="resultatNiveau" name="resultatNiveau" class="form-control">
                                             <label for="resultatFormation"> </label>
-                                            <input type="text" id="resultatFormation" class="form-control">
+                                            <input type="text" id="resultatFormation" name="resultatFormation" class="form-control">
                                             <label for="resultatExperience"> </label>
-                                            <input type="text" id="resultatExperience" class="form-control">   
+                                            <input type="text" id="resultatExperience" name="resultatExperience" class="form-control">   
                                         </div>
                                          <div class="col-md-3">
                                             <p style="font-weight: bold;">Nb de points</p>
                                             <label for="pointNiveau"></label>
-                                            <input type="text" id="pointNiveau" class="form-control">
+                                            <input type="text" id="pointNiveau" name="pointNiveau" class="form-control">
                                             <label for="pointFormation"></label>
-                                            <input type="text" id="pointFormation" class="form-control">
+                                            <input type="text" id="pointFormation" name="pointFormation" class="form-control">
                                             <label for="pointExperience"></label>
-                                            <input type="text" id="pointExperience" class="form-control">   
+                                            <input type="text" id="pointExperience" name="pointExperience" class="form-control">   
                                         </div>
                                         <div class="col-md-3">
                                             <p style="font-weight: bold;">Commentaires</p>
                                             <label for="commentaire1"></label>
-                                            <input type="text" id="commentaire1" class="form-control">
+                                            <input type="text" id="commentaire1" name="commentaire1" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -145,57 +131,45 @@
                                     <div class="row">
                                         <div class="col-md-3">
                                             <p style="font-weight: bold;">Qualités personnelles (5 pts)</p>
-                                            <label for="travail" style="margin-bottom: 0;">Travail d'équipe:</label>
-                                            <input type="text" id="travail" class="form-control">
-                                            <label for="curiosite" style="margin-bottom: 0;">Curiosité:</label>
-                                            <input type="text" id="curiosite" class="form-control">
-                                            <label for="dynammisme" style="margin-bottom: 0;">Dynamisme:</label>
-                                            <input type="text" id="dynammisme" class="form-control">
-                                            <label for="discours" style="margin-bottom: 0;">Discours:</label>
-                                            <input type="text" id="discours" class="form-control">
-                                            <label for="mobilite" style="margin-bottom: 0;">Mobilité et disponibilité:</label>
-                                            <input type="text" id="mobilite" class="form-control">
+                                            <label for="travail" style="padding-left: 25px;margin-bottom: 30px;padding-top:22px;padding-right: 48px;">Travail d'équipe:</label>
+                                            <label for="curiosite" style="padding-left: 25px;padding-top:15px;margin-bottom: 30px;padding-right: 48px;">Curiosité:</label><label for="dynammisme" style="padding-left: 25px;padding-top:10px;margin-bottom: 30px;padding-right: 48px;">Dynamisme:</label>
+                                            <label for="discours" style="padding-left: 25px;padding-top:10px;margin-bottom: 30px;padding-right: 48px;">Discours:</label><label for="mobilite" style="padding-left: 25px;padding-top:14px;margin-bottom: 30px;">Mobilité et disponibilité:</label>
+                                   
                                         </div>
                                          <div class="col-md-3">
                                             <p style="font-weight: bold;">Résultats (0 à 2)</p>
                                             <label for="resultatTravail" style="margin-bottom: 0;"></label>
-                                            <input type="text" id="resultatTravail" class="form-control">
+                                            <input type="text" id="resultatTravail" name="resultatTravail" class="form-control">
                                             <label for="resultatCuriosite" style="margin-bottom: 0;"> </label>
-                                            <input type="text" id="resultatCuriosite" class="form-control">
+                                            <input type="text" id="resultatCuriosite" name="resultatCuriosite" class="form-control">
                                             <label for="resultatDynamisme" style="margin-bottom: 0;"> </label>
-                                            <input type="text" id="resultatDynamisme" class="form-control">
+                                            <input type="text" id="resultatDynamisme" name="resultatDynamisme" class="form-control">
                                             <label for="resultatDiscours" style="margin-bottom: 0;"></label>
-                                            <input type="text" id="resultatDiscours" class="form-control">
+                                            <input type="text" id="resultatDiscours" name="resultatDiscours" class="form-control">
                                             <label for="resultatMobilite" style="margin-bottom: 0;"></label>
-                                            <input type="text" id="resultatMobilite" class="form-control">
+                                            <input type="text" id="resultatMobilite" name="resultatMobilite" class="form-control">
                                             <label for="total" style="margin-left: 155px; margin-bottom: 0;">Total</label>      
                                         </div>
                                          <div class="col-md-3">
                                             <p style="font-weight: bold;">Nb de points</p>
                                             <label for="pointTravail"></label>
-                                            <input type="text" id="pointTravail" class="form-control">
-
+                                            <input type="text" id="pointTravail" name="pointTravail" class="form-control">
                                             <label for="pointCuriosite"></label>
-                                            <input type="text" id="pointCuriosite" class="form-control">
-
+                                            <input type="text" id="pointCuriosite" name="pointCuriosite" class="form-control">
                                             <label for="pointDynamisme"></label>
-                                            <input type="text" id="pointDynamisme" class="form-control">
-
+                                            <input type="text" id="pointDynamisme" name="pointDynamisme" class="form-control">
                                             <label for="pointDiscours"></label>
-                                            <input type="text" id="pointDiscours" class="form-control">
-
+                                            <input type="text" id="pointDiscours" name="pointDiscours" class="form-control">
                                             <label for="pointMobilite"></label>
-                                            <input type="text" id="pointMobilite" class="form-control">
-
-                                            <input type="text" id="total" class="form-control"> 
-
+                                            <input type="text" id="pointMobilite" name="pointMobilite" class="form-control">
+                                            <input type="text" id="total" name="total" style="margin-top:16px;" class="form-control"> 
                                         </div>
                                         <div class="col-md-3">
                                             <p style="font-weight: bold;">Commentaires</p>
                                             <label for="commentaire2" style="margin-bottom: 0;"></label>
-                                            <input type="text" id="commentaire2" class="form-control">
+                                            <input type="text" id="commentaire2" name="commentaire2" class="form-control">
                                             <label for="commentaires2" style="margin-bottom: 0;"></label>
-                                            <input type="text" id="commentaires2" class="form-control">
+                                            <input type="text" id="commentaires2" name="commentaires2"  class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -204,43 +178,43 @@
                                     <div class="row">
                                         <div class="col-md-3">
                                             <p style="font-weight: bold;">Projet professionnel (3pts)</p>
-                                            <label for="metier" style="margin-bottom: 0;">Connaissance du métier:</label>
-                                            <input type="text" id="metier" class="form-control">
-                                            <label for="entreprise" style="margin-bottom: 0;">Connaissance d'entreprise:</label>
-                                            <input type="text" id="entreprise" class="form-control">
-                                            <label for="projet" style="margin-bottom: 0;">Projet professionnel:</label>
-                                            <input type="text" id="projet" class="form-control">
+                                            <label for="metier" style="padding-left: 25px;margin-bottom: 15px;margin-top: 26px;">Connaissance du métier:</label>
+                                            
+                                            <label for="entreprise" style="padding-left: 25px;margin-bottom: 15px;margin-top: 28px;">Connaissance d'entreprise:</label>
+                                           
+                                            <label for="projet" style="padding-left: 25px;margin-bottom: 15px;margin-top: 26px;">Projet professionnel:</label>
+                                      
                                         </div>
                                          <div class="col-md-3">
                                             <p style="font-weight: bold;">Résultats (0 à 2)</p>
                                             <label for="resultatMetier" style="margin-bottom: 0;"></label>
-                                            <input type="text" id="resultatMetier" class="form-control">
+                                            <input type="text" id="resultatMetier" name="resultatMetier" class="form-control">
                                             <label for="resultatEntreprise" style="margin-bottom: 0;"> </label>
-                                            <input type="text" id="resultatEntreprise" class="form-control">
+                                            <input type="text" id="resultatEntreprise" name="resultatEntreprise" class="form-control">
                                             <label for="resultatProjet" style="margin-bottom: 0;"> </label>
-                                            <input type="text" id="resultatProjet" class="form-control">
-                                            <label for="total1" style="margin-left: 155px;">Total</label>      
+                                            <input type="text" id="resultatProjet" name="resultatProjet" class="form-control">
+                                            <label for="total1" style="margin-left: 155px;margin-top:16px;"">Total</label>      
                                         </div>
                                          <div class="col-md-3">
                                             <p style="font-weight: bold;">Nb de points</p>
                                             <label for="pointMetier"></label>
-                                            <input type="text" id="pointMetier" class="form-control">
+                                            <input type="text" id="pointMetier" name="pointMetier" class="form-control">
 
                                             <label for="pointEntreprise"></label>
-                                            <input type="text" id="pointEntreprise" class="form-control">
+                                            <input type="text" id="pointEntreprise" name="pointEntreprise" class="form-control">
 
                                             <label for="pointProjet"></label>
-                                            <input type="text" id="pointProjet" class="form-control">
+                                            <input type="text" id="pointProjet" name="pointProjet" class="form-control">
 
-                                            <input type="text" id="total1" class="form-control"> 
+                                            <input type="text" id="total1" name="total1" style="margin-top:16px;" class="form-control"> 
 
                                         </div>
                                         <div class="col-md-3">
                                             <p style="font-weight: bold;">Commentaires</p>
                                             <label for="commentaire3" style="margin-bottom: 0;"></label>
-                                            <input type="text" id="commentaire3" class="form-control">
+                                            <input type="text" id="commentaire3" name="commentaire3" class="form-control">
                                             <label for="commentaires3" style="margin-bottom: 0;"></label>
-                                            <input type="text" id="commentaires3" class="form-control">
+                                            <input type="text" id="commentaires3" name="commentaires3" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -249,27 +223,27 @@
                                     <div class="row">
                                         <div class="col-md-3">
                                             <p style="font-weight: bold;">Tests techniques (10pts)</p>
-                                            <label for="culture" style="margin-bottom: 0;">Culture générale et technique:</label>
-                                            <input type="text" id="culture" class="form-control">
+                                            <label for="culture" style="padding-left: 25px;margin-bottom: 15px;margin-top: 26px;">Culture générale et technique:</label>
+                                            
                                         </div>
                                          <div class="col-md-3">
                                             <p style="font-weight: bold;">Résultats (0 à 10)</p>
                                             <label for="resultatCulture" style="margin-bottom: 0;"></label>
-                                            <input type="text" id="resultatCulture" class="form-control">
+                                            <input type="text" id="resultatCulture" name="resultatCulture" class="form-control">
 
                                             <label for="total2" style="margin-left: 155px;">Total</label>      
                                         </div>
                                          <div class="col-md-3">
                                             <p style="font-weight: bold;">Nb de points</p>
                                             <label for="pointCulture"></label>
-                                            <input type="text" id="pointCulture" class="form-control">
-                                            <input type="text" id="total2" class="form-control"> 
+                                            <input type="text" id="pointCulture" name="pointCulture" class="form-control">
+                                            <input type="text" id="total2" name="total2" style="margin-top:16px;" class="form-control"> 
 
                                         </div>
                                         <div class="col-md-3">
                                             <p style="font-weight: bold;">Commentaires</p>
                                             <label for="commentaire4" style="margin-bottom: 0;"></label>
-                                            <input type="text" id="commentaire4" class="form-control">
+                                            <input type="text" id="commentaire4" name="commentaire4" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -282,12 +256,12 @@
                                         <div class="col-md-3">
                                             <p style="font-weight: bold;">Nombres de points total</p>
                                             <label for="NbPoints" style="margin-bottom: 0;"></label>
-                                            <input type="text" id="NbPoints" class="form-control">
+                                            <input type="text" id="NbPoints" name="NbPoints" class="form-control">
                                         </div>
                                         <div class="col-md-3">
                                             <p style="font-weight: bold;">Note /20</p>
                                              <label for="note" style="margin-bottom: 0;"></label>
-                                            <input type="text" id="note" class="form-control">
+                                            <input type="text" id="note" name="note" class="form-control">
                                         </div>
                                         </div>
                                     </div>
@@ -330,8 +304,7 @@
                             </div>
 
                             <div style="text-align: center">
-                                <button type="submit" class="btn btn-primary">Ajouter</button>
-                                <button type="submit" class="btn btn-primary">Modifier</button>
+                                <button type="submit" id="ajouterResultat" class="btn btn-primary">Ajouter</button>
                             </div>
                         </form>
                     </div>
