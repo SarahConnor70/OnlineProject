@@ -1,28 +1,29 @@
+
 {% extends 'layout/layout.html' %}
 {% block content %}
 <div class="col-md-offset-3 col-lg-6 col-md-12">
-  <div id="map" style="height: 300px">
+  <div id="map">
             <p>Veuillez patienter pendant le chargement de la carte...</p>
-    </div>
+        </div>
     <div class="card">
         <div class="card-header" data-background-color="purple">
             <h3 class="title">Jours de visite</h3>
         </div>
         <div class="card-content table-responsive">
-        	<table class="table table-hover">
+            <table class="table table-hover">
                 <thead class="text-warning" style="color:orange;">
-                	<th>Jours </th>
-                	<th>Nombre de rendez-vous</th>
+                    <th>Jours </th>
+                    <th>Nombre de rendez-vous</th>
                     <th>Ville</th>
                    
                 </thead>
                 <tbody>
-                	<tr>
-                    	<td><div id="nom" name="nom" contenteditable="true">Date</div></td>
-                    	<td><div id="nom" name="nom" contenteditable="true"></div></td>
+                    <tr>
+                        <td><div id="nom" name="nom" contenteditable="true">Date</div></td>
+                        <td><div id="nom" name="nom" contenteditable="true"></div></td>
 
-                	</tr>
-            	</tbody>
+                    </tr>
+                </tbody>
             </table>
         </div>
         <div id="destinationForm">
@@ -36,12 +37,10 @@
             </form>
         </div>
         <div id="panel"></div>
-
       
-	</div>
+    </div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMNHNUUq__EVRbC45mTLCsD1H7d0M4P08 &callback=myMap&language=fr"></script>
-    <script src="assets/js/functions.js"></script>
+    <script src="../assets/js/functions.js"></script>
 
 </div>
 {% endblock %}
-

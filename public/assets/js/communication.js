@@ -25,7 +25,6 @@ $(document).ready(function() {
             })
         }
     });
-
     //Resultats des tests
     $('#ajouterResultat').on('click', function(e){
         e.preventDefault();
@@ -44,9 +43,41 @@ $(document).ready(function() {
         var pointFormation     = $('#pointFormation').val();
         var pointExperience    = $('#pointExperience').val();
         var commentaire1       = $('#commentaire1').val();
+        var resultatTravail    = $('#resultatTravail').val();
+        var resultatCuriosite  = $('#resultatCuriosite').val();
+        var resultatDynamisme  = $('#resultatDynamisme').val();
+        var resultatDiscours   = $('#resultatDiscours').val();
+        var resultatMobilite   = $('#resultatMobilite').val();
+        var pointTravail       = $('#pointTravail').val();
+        var pointCuriosite     = $('#pointCuriosite').val();
+        var pointDynamisme     = $('#pointDynamisme').val();
+        var pointDiscours      = $('#pointDiscours').val();
+        var pointMobilite      = $('#pointMobilite').val();
+        var total              = $('#total').val();
+        var commentaire2       = $('#commentaire2').val();
+        var commentaires2      = $('#commentaires2').val(); 
+        var resultatMetier     = $('#resultatMetier').val();
+        var resultatEntreprise = $('#resultatEntreprise').val();
+        var resultatProjet     = $('#resultatProjet').val();
+        var pointMetier        = $('#pointMetier').val();
+        var pointEntreprise    = $('#pointEntreprise').val();
+        var pointProjet        = $('#pointProjet').val();
+        var total1             = $('#total1').val();
+        var commentaire3       = $('#commentaire3').val();
+        var commentaires3      = $('#commentaires3 ').val();
+        var resultatCulture    = $('#resultatCulture').val();
+        var pointCulture       = $('#pointCulture').val();
+        var total2             = $('#total2').val();
+        var commentaire4       = $('#commentaire4').val();
+        var NbPoints           = $('#NbPoints').val();
+        var note               = $('#note').val();
 
-        if (date!='' || connuFormation!='' || age!='' || prescription!='' || status!='' || prescripteur!='' || contreIndic!='' || commentaire!='' 
-            || resultatNiveau!='' || resultatFormation!='' || resultatExperience!='' || pointNiveau!='' || pointFormation!='' || pointExperience!='' || commentaire1!='') {
+
+        if (date!='' || connuFormation!='' || age!='' || prescription!='' || status!='' || prescripteur!='' || contreIndic!='' || commentaire!='' || resultatNiveau!='' || resultatFormation!='' 
+                     || resultatExperience!='' || pointNiveau!='' || pointFormation!='' || pointExperience!='' || commentaire1!=''|| resultatTravail!='' || resultatCuriosite!='' || resultatDynamisme!='' 
+                     || resultatDiscours!='' || resultatMobilite!='' || pointTravail!='' || pointCuriosite!='' || pointDynamisme!='' || pointDiscours!='' || pointMobilite!='' || total!='' || commentaire2!='' 
+                     || commentaires2!='' || resultatMetier!='' || resultatEntreprise!='' || resultatProjet!=''|| pointMetier!='' || pointEntreprise!='' || pointProjet!=''|| total1!='' || commentaire3!='' || commentaires3!=''
+                     || resultatCulture!='' || pointCulture!='' || total2!='' || commentaire4!='' || NbPoints!='' || note!='') {
             $.ajax({
             url:'/stagiaire',
             type: 'POST',
@@ -66,6 +97,34 @@ $(document).ready(function() {
                 "pointFormation"    : pointFormation,
                 "pointExperience"   : pointExperience,
                 "commentaire1"      : commentaire1,
+                "resultatTravail"   : resultatTravail,
+                "resultatCuriosite" : resultatCuriosite,
+                "resultatDynamisme" : resultatDynamisme,
+                "resultatDiscours"  : resultatDiscours,
+                "resultatMobilite"  : resultatMobilite,
+                "pointTravail"      : pointTravail,
+                "pointCuriosite"    : pointCuriosite,
+                "pointDynamisme"    : pointDynamisme,
+                "pointDiscours"     : pointDiscours,
+                "pointMobilite"     : pointMobilite,
+                "total"             : total,
+                "commentaire2"      : commentaire2,
+                "commentaires2"     : commentaires2, 
+                "resultatMetier"    : resultatMetier,
+                "resultatEntreprise": resultatEntreprise,
+                "resultatProjet"    : resultatProjet,
+                "pointMetier"       : pointMetier,
+                "pointEntreprise"   : pointEntreprise,
+                "pointProjet"       : pointProjet,
+                "total1"            : total1,
+                "commentaire3"      : commentaire3,
+                "commentaires3"     : commentaires3,                                    
+                "resultatCulture"   : resultatCulture,
+                "pointCulture"      : pointCulture,
+                "total2"            : total2,
+                "commentaire4"      : commentaire4,
+                "NbPoints"          : NbPoints,
+                "note"              : note,
             },
             success: function(json){
                 var jsons = JSON.parse(json);
@@ -81,132 +140,102 @@ $(document).ready(function() {
             });
         }
     });
-    
-    //Ajouter les stages
-    $('#ajouterStage').on('click', function(e){
+
+    function operation(champ){
+
+        var resultat = champ * 10 / 16;
+        return resultat; 
+    }
+    function addition(champ1, champ2, champ3, champ4, champ5){
+        var champs1 = parseFloat(champ1);
+        var champs2 = parseFloat(champ2);
+        var champs3 = parseFloat(champ3);
+        var champs4 = parseFloat(champ4);
+        var champs5 = parseFloat(champ5);
+
+        var add; 
+        return add = parseFloat(champs1 + champs2 + champs3 + champs4 + champs5);
+     }
+     function addition1(champ1, champ2, champ3){
+        var champs1 = parseFloat(champ1);
+        var champs2 = parseFloat(champ2);
+        var champs3 = parseFloat(champ3);
+
+        var add; 
+        return add = parseFloat(champs1 + champs2 + champs3);
+
+     }
+
+     function multiplier(champ1){
+
+        var champs1 = parseFloat(champ1);
+
+        var multiple = parseFloat(champs1 * 4);
+        multiple = multiple + '/40';
+        return multiple;
+
+     }
+
+    $('#calculerResultat').on('click', function(e){
+
         e.preventDefault();
-
-        var nomEntreprise       = $('#nomEntreprise').val();
-        var adresseEntreprise   = $('#adresseEntreprise').val();
-        var telephoneEntreprise = $('#telephoneEntreprise').val();
-        var nomTuteur           = $('#nomTuteur').val();
-
-        if(nomEntreprise != '' || adresseEntreprise != '' || telephoneEntreprise != '' || nomTuteur != ''){
-            $.ajax({
-                url:'/stagiaire',
-                type:'POST',
-                data:{
-                    "nomEntreprise": nomEntreprise,
-                    "adresseEntreprise": adresseEntreprise,
-                    "telephoneEntreprise": telephoneEntreprise,
-                    "nomTuteur": nomTuteur
-                },
-                success: function(json){
-                    var jsons = JSON.parse(json);
-                    if(jsons.reponse == 'ok') {
-                        faireNotif('Informations de l\'entreprise ok', 'primary');
-                    } else {
-                        faireNotif('Informations de l\'entreprise incorrect', 'error');
-                    }
-                },
-                error: function(json) {
-                    faireNotif('Erreur..', 'error');
-                } 
-            });
-        }
+        $('#pointTravail').val(operation($('#resultatTravail').val()));
+        $('#pointCuriosite').val(operation($('#resultatCuriosite').val()));
+        $('#pointDynamisme').val(operation($('#resultatDynamisme').val()));
+        $('#pointDiscours').val(operation($('#resultatDiscours').val()));
+        $('#pointMobilite').val(operation($('#resultatMobilite').val()));
+        $('#pointMetier').val(operation($('#resultatMetier').val()));
+        $('#pointEntreprise').val(operation($('#resultatEntreprise').val()));
+        $('#pointProjet').val(operation($('#resultatProjet').val()));
+        $('#total').val(addition($('#pointTravail').val(), $('#pointCuriosite').val(), $('#pointDynamisme').val(), $('#pointDiscours').val(), $('#pointMobilite').val()));
+        $('#total1').val(addition1($('#pointMetier').val(), $('#pointEntreprise').val(), $('#pointProjet').val()));
+        $('#pointCulture').val($('#resultatCulture').val());
+        $('#total2').val($('#pointCulture').val());
+        $('#commentaire4').val(multiplier($('#total2').val()));
+        $('#NbPoints').val(addition1($('#total').val(), $('#total1').val(), $('#total2').val()));
+        $('#note').val($('#NbPoints').val());
     });
-    
-    //Chercher un stagiaire
-    $("#rechercheStagiaire").on('click', function(e){
+     
+
+    //Créer un stagiaire
+    $('#ajouter').on('click', function(e){
         e.preventDefault();
-        $('#divRecherche').toggle();
-    });
-    
-    $('#recherche').on('click', function(e){
-        e.preventDefault();
+        var nomStagiaire        = $('#nomStagiaire').val();
+        var prenomStagiaire     = $('#prenomStagiaire').val();
+        var telephoneStagiaire  = $('#telephoneStagiaire').val();
+        var mailStagiaire       = $('#mailStagiaire').val();
+        var adresseStagiaire    = $('#adresseStagiaire').val();
+        var cpStagiaire         = $('#cpStagiaire').val();
+        var villeStagiaire      = $('#villeStagiaire').val();
 
-        var prenomRecherche = $('#prenomRecherche').val();
-        var nomRecherche = $('#nomRecherche').val();
-
-        if(prenomRecherche != '' && nomRecherche != ''){
-            $.ajax({
-                url:'/stagiaire',
-                type:'post',
-                data:{
-                    "prenomRecherche": prenomRecherche,
-                    "nomRecherche" : nomRecherche
-                },
-                success: function(json){
-                    //var jsons = JSON.parse(json);
-                    if(json.reponse == 'ok') {
-                        $('#nomStagiaire').val(json.recherche.nom);
-                        $('#prenomStagiaire').val(json.recherche.prenom);
-                        $('#telephoneStagiaire').val(json.recherche.telephone);
-                        $('#mailStagiaire').val(json.recherche.mail);
-                        $('#adresseStagiaire').val(json.recherche.adresse);
-                        $('#cpStagiaire').val(json.recherche.cp);
-                        $('#villeStagiaire').val(json.recherche.ville);
-                        $('#' + json.recherche.accepter).attr('checked', true);
-                        $('#test1').show().addClass("active");
-                        $('#test2').removeClass("active").hide();
-                        $('#test3').removeClass("active").hide();
-                        $('#test4').removeClass("active").hide();
-                        faireNotif('Recherche éffectuée', 'primary');
-                    } else {
-                        faireNotif('Recherche impossible', 'error');
-                    }
-                },
-                error: function(json) {
-                    faireNotif('Erreur..', 'error');
-                }
-            });
-        }
-    });
-    
-    
-   //Modifier un stagiaire
-    $('#modifStagiaire').on('click', function(e){
-        e.preventDefault();
-
-        var nomStagiaire = $('#nomStagiaire').val();
-        var prenomStagiaire = $('#prenomStagiaire').val();
-        var telephoneStagiaire = $('#telephoneStagiaire').val();
-        var mailStagiaire = $('#mailStagiaire').val();
-        var adresseStagiaire = $('#adresseStagiaire').val();
-        var cpStagiaire = $('#cpStagiaire').val();
-        var villeStagiaire = $('#villeStagiaire').val();
-        var accepter = $('input[name=accepter]:checked').val();
-
-        if(nomStagiaire != '' || prenomStagiaire != '' || telephoneStagiaire != '' ||
-         mailStagiaire != '' || adresseStagiaire != '' || cpStagiaire != '' || villeStagiaire != ''){
+        if(nomStagiaire != '' || prenomStagiaire != '' || telephoneStagiaire != '' ||  mailStagiaire != '' || adresseStagiaire != '' || cpStagiaire != '' || villeStagiaire != ''){
             $.ajax({
                 url:'/stagiaire',
                 type: 'POST',
                 data: {
-                    "nomStagiaire": nomStagiaire,
-                    "prenomStagiaire": prenomStagiaire,
+                    "nomStagiaire"      : nomStagiaire,
+                    "prenomStagiaire"   : prenomStagiaire,
                     "telephoneStagiaire": telephoneStagiaire,
-                    "mailStagiaire": mailStagiaire,
-                    "adresseStagiaire": adresseStagiaire,
-                    "cpStagiaire": cpStagiaire,
-                    "villeStagiaire": villeStagiaire,
-                    "accepter": accepter
+                    "mailStagiaire"     : mailStagiaire,
+                    "adresseStagiaire"  : adresseStagiaire,
+                    "cpStagiaire"       : cpStagiaire,
+                    "villeStagiaire"    : villeStagiaire
                 },
                 success: function(json){
-                    var jsons = JSON.parse(json);
-                    if(jsons.reponse == 'ok') {
-                        faireNotif('json ok pour envoie des données', 'primary');
+                    if(json.reponse == 'ok') {
+                        faireNotif('Le stagiaire a bien été enregistré!', 'primary');
                     } else {
-                        faireNotif('erreur lors de l\'envoi des données', 'error');
+                        faireNotif('Echec lors de l\'ajout du stagiaire.', 'error');
                     }
                 },
-                error: function(json) {
+                error: function() {
                     faireNotif('Erreur..', 'error');
                 }
             });
         }
     });
-    
+
+
     //formation
     $('#maj').on('click', function (e){
         e.preventDefault();
@@ -254,6 +283,7 @@ $(document).ready(function() {
         }
     });
 
+
     //coordonnées
     $('#online').on('submit', function(e) {
         e.preventDefault();  // Le formulaire ne s'envoie pas
@@ -286,9 +316,11 @@ $(document).ready(function() {
         }
     });
 
+
     function entities(word) {
         return word.replace(/[^/\"_+-=a-zA-Z 0-9]+/g,'');
     }
+
 
     function loadStagiaire() {
         $.ajax({
@@ -315,6 +347,7 @@ $(document).ready(function() {
         });
     }
 
+
     function faireNotif(message, type) {
         noty({
             text: message,
@@ -330,17 +363,4 @@ $(document).ready(function() {
             }
         });
     }
-    
-    $('#atest2').on('click', function(e){
-        $('#test1').hide();
-    });
-
-    $('#atest3').on('click', function(e){
-        $('#test1').hide();
-    });
-
-    $('#atest4').on('click', function(e){
-        $('#test1').hide();
-    });
-    
 });

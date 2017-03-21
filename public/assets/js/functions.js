@@ -15,21 +15,11 @@ initialize = function(){
   
   map      = new google.maps.Map(document.getElementById('map'), myOptions);
   panel    = document.getElementById('panel');
-
-  var icon = {
-    url: "http://www.onlineformapro.com/templates/corporate_response/favicon.ico",
-    scaledSize: new google.maps.Size(30, 30), // scaled size
-    origin: new google.maps.Point(0,0), // origin
-    anchor: new google.maps.Point(0, 0) // anchor
-
-};
-
   
   var marker = new google.maps.Marker({
     position : latLng,
     map      : map,
-    title    : "Vesoul OnlineFormaPro",
-    icon     : icon
+    title    : "Vesoul OnlineFormaPro"
     //icon     : "marker_Vesoul OnlineFormaPro.gif" // Chemin de l'image du marqueur pour surcharger celui par défaut
   });
   
