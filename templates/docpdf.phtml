@@ -1,0 +1,47 @@
+{% extends 'layout/layout.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-md-offset-2 col-lg-8 col-md-12">
+        <div class="card">
+            <div class="card-header" data-background-color="purple">
+                <h4 class="title">Générer un PDF</h4>
+                <p class="category">par stagiaire ou par formation</p>
+            </div>
+            <form method="POST">
+            	<ul class="tabs">
+                    <li class="tab col s6"><a id="listeStagiairePDF" href="#listeStagiaire">Personnes</a></li>
+                    <li class="tab col s6"><a id="listeFormationPDF" href="#listeFormation">Formations</a></li>
+                </ul>
+
+                <div id="listeStagiaire">
+                	<div class="row" id="divRechercheStagiaire">
+                		<div class="col m3">
+                			<label for="prenomRecherchePDF">Prenom:</label>
+                			<input type="text" id="prenomRecherchePDF" name="prenomRecherchePDF" class="form-control">
+                		</div>
+                		<div class="col m3">
+                			<label for="nomRecherchePDF">Nom:</label>
+                			<input type="text" name"nomRecherche" id="nomRecherchePDF" class="form-control">
+                		</div>
+                		<div class="col m3 offset-m2">
+	                		<button type="submit" id="recherchePDF" class="btn btn-primary">Recherche</button>
+    					</div>
+                	</div>
+                </div>
+
+                <div id="listeFormation">
+                	<div class="row" id="divRechercheFormation">
+                		<div class="col m3">
+                			<label for="formationRecherchePDF">Intitule de la formation:</label>
+                			<input type="text" id="formationRecherchePDF" name="formationRecherchePDF" class="form-control">
+                		</div>
+                		<div class="col m3 offset-m5">
+	                		<button type="submit" id="rechercheFormationPDF" class="btn btn-primary">Recherche</button>
+    					</div>
+                	</div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
