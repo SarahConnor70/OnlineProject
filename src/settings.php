@@ -16,8 +16,8 @@ return [
             'level' => \Monolog\Logger::DEBUG,
         ],
         'connection' => [
-            'email' => 'EMAIL ICI',
-            'pass' => 'MOT DE PASSE ICI'
+            'email' => 'admin',
+            'pass' => '1234'
         ],
     ],
 ];
