@@ -19,40 +19,46 @@
                                 <label for="refuse" style="margin-right:15px">Refusé</label>
                             </p>
                             <ul class="tabs">
-                                <li class="tab col s3"><a href="#test1">Personnes</a></li>
-                                <li class="tab col s3"><a href="#test2">Résultats des tests</a></li>
-                                <li class="tab col s3"><a href="#test3">Stages</a></li>
-                                <li class="tab col s3"><a href="#test4">Dates de visite</a></li>
+                                <li class="tab col s3"><a id="atest1" href="#test1">Personnes</a></li>
+                                <li class="tab col s3"><a id="atest2" href="#test2">Résultats des tests</a></li>
+                                <li class="tab col s3"><a id="atest3"  href="#test3">Stages</a></li>
+                                <li class="tab col s3"><a id="atest4" href="#test4">Dates de visite</a></li>
                             </ul>
+                            
                             <!-- Personnes -->
                             <div id="test1" class="col s12">
-                                <div class="col-md-offset-2 col m3">
-                                    <label for="nomStagiaire">Nom:</label>
-                                    <input type="text" id="nomStagiaire" class="form-control">
+                                <div class="row">
+                                    <div class="col-md-offset-2 col m3">
+                                        <label for="nomStagiaire">Nom:</label>
+                                        <input type="text" id="nomStagiaire" class="form-control">
+                                    </div>
+                                    <div class="col-md-offset-2 col m3">
+                                        <label for="prenomStagiaire">Prenom:</label>
+                                        <input type="text" id="prenomStagiaire" class="form-control">
+                                    </div>
+                                    <div class="col-md-offset-2 col m3">
+                                        <label for="telephoneStagiaire">Téléphone:</label>
+                                        <input type="text" id="telephoneStagiaire" class="form-control">
+                                    </div>
+                                    <div class="col-md-offset-2 col m3">
+                                        <label for="mailStagiaire">Mail:</label>
+                                        <input type="text" id="mailStagiaire" class="form-control">
+                                    </div>
+                                    <div class="col-md-offset-2 col m3">
+                                        <label for="adresseStagiaire">Adresse:</label>
+                                        <input type="text" id="adresseStagiaire" class="form-control">
+                                    </div>
+                                    <div class="col-md-offset-2 col m3">
+                                        <label for="cpStagiaire">CP:</label>
+                                        <input type="text" id="cpStagiaire" class="form-control">
+                                    </div>
+                                    <div class="col-md-offset-2 col m3">
+                                        <label for="villeStagiaire">Ville:</label>
+                                        <input type="text" id="villeStagiaire" class="form-control">
+                                    </div>
                                 </div>
-                                <div class="col-md-offset-2 col m3">
-                                    <label for="prenomStagiaire">Prenom:</label>
-                                    <input type="text" id="prenomStagiaire" class="form-control">
-                                </div>
-                                <div class="col-md-offset-2 col m3">
-                                    <label for="telephoneStagiaire">Téléphone:</label>
-                                    <input type="text" id="telephoneStagiaire" class="form-control">
-                                </div>
-                                <div class="col-md-offset-2 col m3">
-                                    <label for="mailStagiaire">Mail:</label>
-                                    <input type="text" id="mailStagiaire" class="form-control">
-                                </div>
-                                <div class="col-md-offset-2 col m3">
-                                    <label for="adresseStagiaire">Adresse:</label>
-                                    <input type="text" id="adresseStagiaire" class="form-control">
-                                </div>
-                                <div class="col-md-offset-2 col m3">
-                                    <label for="cpStagiaire">CP:</label>
-                                    <input type="text" id="cpStagiaire" class="form-control">
-                                </div>
-                                <div class="col-md-offset-2 col m3">
-                                    <label for="villeStagiaire">Ville:</label>
-                                    <input type="text" id="villeStagiaire" class="form-control">
+                                <div class="row">
+                                    <button type="submit" id="modifStagiaire" class="btn btn-primary">Ajouter/Modifier</button>
                                 </div>
                             </div>
 
