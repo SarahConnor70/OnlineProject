@@ -196,45 +196,129 @@ $(document).ready(function() {
         $('#note').val($('#NbPoints').val());
     });
      
-
-    //Créer un stagiaire
-    $('#ajouter').on('click', function(e){
+    //Ajouter les stages
+    $('#ajouterStage').on('click', function(e){
         e.preventDefault();
-        var nomStagiaire        = $('#nomStagiaire').val();
-        var prenomStagiaire     = $('#prenomStagiaire').val();
-        var telephoneStagiaire  = $('#telephoneStagiaire').val();
-        var mailStagiaire       = $('#mailStagiaire').val();
-        var adresseStagiaire    = $('#adresseStagiaire').val();
-        var cpStagiaire         = $('#cpStagiaire').val();
-        var villeStagiaire      = $('#villeStagiaire').val();
 
-        if(nomStagiaire != '' || prenomStagiaire != '' || telephoneStagiaire != '' ||  mailStagiaire != '' || adresseStagiaire != '' || cpStagiaire != '' || villeStagiaire != ''){
+        var nomEntreprise       = $('#nomEntreprise').val();
+        var adresseEntreprise   = $('#adresseEntreprise').val();
+        var telephoneEntreprise = $('#telephoneEntreprise').val();
+        var nomTuteur           = $('#nomTuteur').val();
+
+        if(nomEntreprise != '' || adresseEntreprise != '' || telephoneEntreprise != '' || nomTuteur != ''){
             $.ajax({
                 url:'/stagiaire',
-                type: 'POST',
-                data: {
-                    "nomStagiaire"      : nomStagiaire,
-                    "prenomStagiaire"   : prenomStagiaire,
-                    "telephoneStagiaire": telephoneStagiaire,
-                    "mailStagiaire"     : mailStagiaire,
-                    "adresseStagiaire"  : adresseStagiaire,
-                    "cpStagiaire"       : cpStagiaire,
-                    "villeStagiaire"    : villeStagiaire
+                type:'POST',
+                data:{
+                    "nomEntreprise": nomEntreprise,
+                    "adresseEntreprise": adresseEntreprise,
+                    "telephoneEntreprise": telephoneEntreprise,
+                    "nomTuteur": nomTuteur
                 },
                 success: function(json){
-                    if(json.reponse == 'ok') {
-                        faireNotif('Le stagiaire a bien été enregistré!', 'primary');
+                    var jsons = JSON.parse(json);
+                    if(jsons.reponse == 'ok') {
+                        faireNotif('Informations de l\'entreprise ok', 'primary');
                     } else {
-                        faireNotif('Echec lors de l\'ajout du stagiaire.', 'error');
+                        faireNotif('Informations de l\'entreprise incorrect', 'error');
                     }
                 },
-                error: function() {
+                error: function(json) {
+                    faireNotif('Erreur..', 'error');
+                } 
+            });
+        }
+    });
+    
+    //Chercher un stagiaire
+    $("#rechercheStagiaire").on('click', function(e){
+        e.preventDefault();
+        $('#divRecherche').toggle();
+    });
+    
+    $('#recherche').on('click', function(e){
+        e.preventDefault();
+
+        var prenomRecherche = $('#prenomRecherche').val();
+        var nomRecherche = $('#nomRecherche').val();
+
+        if(prenomRecherche != '' && nomRecherche != ''){
+            $.ajax({
+                url:'/stagiaire',
+                type:'post',
+                data:{
+                    "prenomRecherche": prenomRecherche,
+                    "nomRecherche" : nomRecherche
+                },
+                success: function(json){
+                    //var jsons = JSON.parse(json);
+                    if(json.reponse == 'ok') {
+                        $('#nomStagiaire').val(json.recherche.nom);
+                        $('#prenomStagiaire').val(json.recherche.prenom);
+                        $('#telephoneStagiaire').val(json.recherche.telephone);
+                        $('#mailStagiaire').val(json.recherche.mail);
+                        $('#adresseStagiaire').val(json.recherche.adresse);
+                        $('#cpStagiaire').val(json.recherche.cp);
+                        $('#villeStagiaire').val(json.recherche.ville);
+                        $('#' + json.recherche.accepter).attr('checked', true);
+                        $('#test1').show().addClass("active");
+                        $('#test2').removeClass("active").hide();
+                        $('#test3').removeClass("active").hide();
+                        $('#test4').removeClass("active").hide();
+                        faireNotif('Recherche éffectuée', 'primary');
+                    } else {
+                        faireNotif('Recherche impossible', 'error');
+                    }
+                },
+                error: function(json) {
                     faireNotif('Erreur..', 'error');
                 }
             });
         }
     });
+    
+    //Modifier un stagiaire
+    $('#modifStagiaire').on('click', function(e){
+        e.preventDefault();
 
+        var nomStagiaire = $('#nomStagiaire').val();
+        var prenomStagiaire = $('#prenomStagiaire').val();
+        var telephoneStagiaire = $('#telephoneStagiaire').val();
+        var mailStagiaire = $('#mailStagiaire').val();
+        var adresseStagiaire = $('#adresseStagiaire').val();
+        var cpStagiaire = $('#cpStagiaire').val();
+        var villeStagiaire = $('#villeStagiaire').val();
+        var accepter = $('input[name=accepter]:checked').val();
+
+        if(nomStagiaire != '' || prenomStagiaire != '' || telephoneStagiaire != '' ||
+         mailStagiaire != '' || adresseStagiaire != '' || cpStagiaire != '' || villeStagiaire != ''){
+            $.ajax({
+                url:'/stagiaire',
+                type: 'POST',
+                data: {
+                    "nomStagiaire": nomStagiaire,
+                    "prenomStagiaire": prenomStagiaire,
+                    "telephoneStagiaire": telephoneStagiaire,
+                    "mailStagiaire": mailStagiaire,
+                    "adresseStagiaire": adresseStagiaire,
+                    "cpStagiaire": cpStagiaire,
+                    "villeStagiaire": villeStagiaire,
+                    "accepter": accepter
+                },
+                success: function(json){
+                    var jsons = JSON.parse(json);
+                    if(jsons.reponse == 'ok') {
+                        faireNotif('json ok pour envoie des données', 'primary');
+                    } else {
+                        faireNotif('erreur lors de l\'envoi des données', 'error');
+                    }
+                },
+                error: function(json) {
+                    faireNotif('Erreur..', 'error');
+                }
+            });
+        }
+    });
 
     //formation
     $('#maj').on('click', function (e){
@@ -316,6 +400,13 @@ $(document).ready(function() {
         }
     });
 
+    $('#recherchePDF').on('click', function(e){
+        e.preventDefault();
+    });
+
+    $('#rechercheFormationPDF').on('click', function(e){
+        e.preventDefault();
+    });
 
     function entities(word) {
         return word.replace(/[^/\"_+-=a-zA-Z 0-9]+/g,'');
@@ -363,4 +454,16 @@ $(document).ready(function() {
             }
         });
     }
+    
+    $('#atest2').on('click', function(e){
+        $('#test1').hide();
+    });
+
+    $('#atest3').on('click', function(e){
+        $('#test1').hide();
+    });
+
+    $('#atest4').on('click', function(e){
+        $('#test1').hide();
+    });
 });
