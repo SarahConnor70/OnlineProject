@@ -25,6 +25,21 @@ class Stagiaire {
         return sizeof($fetch) > 1 ? $fetch : false;
     }
     
+    public static function recupStages() {
+        $data   = [];
+        $ville = [];
+        $promo = ModelFormation::getLastPromo()['promo'];
+        $query  = DataBase::bdd()->prepare("SELECT * from stage WHERE promo = :promo");
+        $query->bindParam(":promo", $promo);
+        $query->execute();
+        $fetch  = $query->fetchAll();
+        for ($i = 0; $i < sizeof($fetch); $i++) {
+            $data[$fetch[$i]['date']][] .= $fetch[$i]["adresse"] . " " . $fetch[$i]["cp"] . " " . $fetch[$i]["ville"];
+        }
+        return $data;
+
+    }
+    
     public static function modifStagiaire($stagiaire){
         $query  = "UPDATE stagiaires SET cp = :cp,
                                          ville = :ville,
