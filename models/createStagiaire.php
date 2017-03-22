@@ -27,7 +27,6 @@ class Stagiaire {
     
     public static function recupStages() {
         $data   = [];
-        $ville = [];
         $promo = ModelFormation::getLastPromo()['promo'];
         $query  = DataBase::bdd()->prepare("SELECT * from stage WHERE promo = :promo");
         $query->bindParam(":promo", $promo);
