@@ -1,6 +1,17 @@
 $(document).ready(function() {
-    // load stages
+    $(document).on('click', function(e) {
+        if (e.target.id.length == 1 && !isNaN(e.target.id)) {
+            var ville = $(this).find('#direction' + e.target.id).text().split(",");
+            var tab   = [];
+            for (var i = 0; i < ville.length; i++) {
+                tab.push(ville[i]);
+            }
+            getLalOn(tab);
+        }
+    })
+    // load stages + stagiaires
     loadStagiaire();
+    loadStages();
     // connexion
     $("#connexion").on('click', function() {
         var mail = $("#mail").val();
@@ -438,6 +449,57 @@ $(document).ready(function() {
         });
     }
 
+    function loadStages() {
+        $.ajax({
+            url: '/jvisite',
+            method: 'POST',
+            success: function(json) {
+                console.log
+                if (json == "") {
+                    $("#jvisite").html("Pas de stagiaire");
+                } else {
+                    var i     = 0;
+                    for (var test in json) { 
+                        i++;
+                        ls += '<tr>';
+                        ls += '<td class="text-center" >' + test + '</td>';
+                        ls += '<td class="text-center" >' + json[test].length + '</td>';
+                        ls += '<td class="text-center" id="direction' + i + '">' + json[test].join(",") + '</td>';
+                        ls += '<td class="text-center" ><button id="' + i + '" class="btn btn-primary" >Charger la map</button></td>';
+                        ls += '</tr>';
+                        $("#jvisite").html(ls);
+                    }
+                }
+            }
+        });
+    }
+
+    function getLalOn(ville) {
+        var tab = [{
+            name: "OnlineFormaPro Vesoul", 
+            lat:47.63771, 
+            long:6.15067 
+        }];
+        for (var villes in ville) {
+            console.log(ville[villes]);
+            $.ajax({
+                url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' + ville[villes].replace(/ /g, '+') + '&key=AIzaSyBSPF5q5m2uk0mcsHl48SFcCukZ7ksQY_E',
+                method: 'GET',
+                async: false,
+            
+            }).done(function(json) {
+                console.log(json);
+                var localisation = json.results[0]["geometry"]["location"];
+                tab.push({
+                    name: ville[villes],
+                    lat: localisation["lat"],
+                    long: localisation["lng"]
+                });
+            });
+        }
+        calculate(tab);
+
+    }
 
     function faireNotif(message, type) {
         noty({
