@@ -459,6 +459,7 @@ $(document).ready(function() {
                     $("#jvisite").html("Pas de stagiaire");
                 } else {
                     var i     = 0;
+                    var ls     = '';
                     for (var test in json) { 
                         i++;
                         ls += '<tr>';
