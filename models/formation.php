@@ -39,6 +39,13 @@ class ModelFormation{
         return $execute->fetch();
 
     }
+    
+    public static function getLastPromo(){
+			
+			$query = "SELECT promo FROM formations order by id desc";
+			$execute = Database::bdd()->query($query);
+			return $execute->fetch();
+		}
 
 }
 
