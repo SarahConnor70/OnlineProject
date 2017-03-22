@@ -18,6 +18,12 @@ $app->post("/", function($request, $response, $args) {
     return $response->withJson($data, 200, JSON_PRETTY_PRINT);
 });
 
+$app->post('/dashboard', function($request, $response, $args) {
+    $data = Stagiaire::recupStagiaire();
+    $response->withHeader('Content-type', 'application/json');
+    return $response->withJson($data, 200, JSON_PRETTY_PRINT);
+});
+
 $app->post('/coordonnees', function($request, $response){
 
 	if(!empty($_POST['nomOnline']) && !empty($_POST['adresseOnline']) && !empty($_POST['telephoneOnline'])) {
