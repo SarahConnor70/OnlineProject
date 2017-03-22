@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost
--- Généré le :  Lun 20 Mars 2017 à 15:41
+-- Généré le :  Mer 22 Mars 2017 à 11:09
 -- Version du serveur :  10.1.21-MariaDB
 -- Version de PHP :  7.1.1
 
@@ -80,22 +80,53 @@ CREATE TABLE `resultatTest` (
   `pointNiveau` varchar(5) NOT NULL,
   `pointFormation` varchar(5) NOT NULL,
   `pointExperience` varchar(5) NOT NULL,
-  `commentaire1` varchar(255) NOT NULL
+  `commentaire1` varchar(255) NOT NULL,
+  `resultatTravail` varchar(10) NOT NULL,
+  `resultatCuriosite` varchar(10) NOT NULL,
+  `resultatDynamisme` varchar(10) NOT NULL,
+  `resultatDiscours` varchar(10) NOT NULL,
+  `resultatMobilite` varchar(10) NOT NULL,
+  `pointTravail` varchar(10) NOT NULL,
+  `pointCuriosite` varchar(10) NOT NULL,
+  `pointDynamisme` varchar(10) NOT NULL,
+  `pointDiscours` varchar(10) NOT NULL,
+  `pointMobilite` varchar(10) NOT NULL,
+  `total` varchar(10) NOT NULL,
+  `commentaire2` varchar(255) NOT NULL,
+  `commentaires2` varchar(255) NOT NULL,
+  `resultatMetier` varchar(10) NOT NULL,
+  `resultatEntreprise` varchar(10) NOT NULL,
+  `resultatProjet` varchar(10) NOT NULL,
+  `pointMetier` varchar(10) NOT NULL,
+  `pointEntreprise` varchar(10) NOT NULL,
+  `pointProjet` varchar(10) NOT NULL,
+  `total1` varchar(10) NOT NULL,
+  `commentaire3` varchar(255) NOT NULL,
+  `commentaires3` varchar(255) NOT NULL,
+  `resultatCulture` varchar(10) NOT NULL,
+  `pointCulture` varchar(10) NOT NULL,
+  `total2` varchar(10) NOT NULL,
+  `commentaire4` varchar(255) NOT NULL,
+  `NbPoints` varchar(50) NOT NULL,
+  `note` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `resultatTest`
 --
 
-INSERT INTO `resultatTest` (`id`, `date`, `connuFormation`, `age`, `prescription`, `status`, `prescripteur`, `contreIndic`, `commentaire`, `id_stagiaire`, `resultatNiveau`, `resultatFormation`, `resultatExperience`, `pointNiveau`, `pointFormation`, `pointExperience`, `commentaire1`) VALUES
-(1, '12/03/2017', 'oui', 45, 'non', 'oui', 'oui', 'non', 'non', 0, '', '', '', '', '', '', ''),
-(2, '23/05/2017', 'oui', 78, 'oui', 'oui', 'oui', 'non', 'non', 0, '', '', '', '', '', '', ''),
-(3, '23/05/2017', 'oui', 78, 'oui', 'oui', 'oui', 'non', 'non', 0, '', '', '', '', '', '', ''),
-(4, '23/05/2017', 'oui', 78, 'oui', 'oui', 'oui', 'non', 'non', 0, '', '', '', '', '', '', ''),
-(5, '23/10/2018', 'non', 26, 'non', 'oui', 'non', 'non', 'oui', 0, '', '', '', '', '', '', ''),
-(6, '23/10/2018', 'non', 26, 'non', 'oui', 'non', 'non', 'oui', 0, '', '', '', '', '', '', ''),
-(7, '9/12/2347', 'non', 34, 'noui', 'nkpl', 'ouo', 'non', 'oui', 0, '', '', '', '', '', '', ''),
-(8, '21/03/2017', 'xcvbn', 56, 'cvbn', 'v nbn', 'vhbkjnlk', 'hkj', 'cvbnjk', 0, 'oui', 'oui', 'non', '1', '2', '1', 'gcfnbnn');
+INSERT INTO `resultatTest` (`id`, `date`, `connuFormation`, `age`, `prescription`, `status`, `prescripteur`, `contreIndic`, `commentaire`, `id_stagiaire`, `resultatNiveau`, `resultatFormation`, `resultatExperience`, `pointNiveau`, `pointFormation`, `pointExperience`, `commentaire1`, `resultatTravail`, `resultatCuriosite`, `resultatDynamisme`, `resultatDiscours`, `resultatMobilite`, `pointTravail`, `pointCuriosite`, `pointDynamisme`, `pointDiscours`, `pointMobilite`, `total`, `commentaire2`, `commentaires2`, `resultatMetier`, `resultatEntreprise`, `resultatProjet`, `pointMetier`, `pointEntreprise`, `pointProjet`, `total1`, `commentaire3`, `commentaires3`, `resultatCulture`, `pointCulture`, `total2`, `commentaire4`, `NbPoints`, `note`) VALUES
+(10, '21/12/1234', 'cgvhbj', 24, 'vbn,', 'bnjk,l', 'bhkjnl', 'bnkjl', 'bhnjk,', 0, 'oui', 'oiu', 'oiu', '1', '2', '2', 'cvbn,;', '1', '1', '1', '1', '1', '1', '2', '2', '2', '2', '5', 'wxcvbn,', 'xcvbn,;', '0', '0', '0', '0', '0', '0', '0', '', '', '', '', '', '', '', ''),
+(11, '13/04/2017', 'pole emploi', 24, 'non', 'demandeur d\'emploi', 'moi', 'non', 'aucun', 0, 'oui', 'non', 'oui', '1', '2', '2', 'bien', '1', '1', '1', '1', '1', '0', '0', '0', '0', '0', '12', 'pas de commentaires ', 'il faut mettre un commentaire', '0', '0', '0', '0', '0', '0', '0', '', '', '', '', '', '', '', ''),
+(12, '13/04/2017', 'pole emploi', 24, 'non', 'demandeur d\'emploi', 'moi', 'non', 'aucun', 0, 'oui', 'non', 'oui', '1', '2', '2', 'bien', '1', '1', '1', '1', '1', '0', '0', '0', '0', '0', '12', 'pas de commentaires sddsdsdlqkfhsdlkvhfsoghnÃ¹epodfhÃ¹EPOiojkgbvjnc,mlxÃ¹lsqpoedirjfhgvbn c,;mÃ¹qpzoeifhgjvbn clmsqoezirgbvn ', 'il faut mettre un commentaire', '0', '0', '0', '0', '0', '0', '0', '', '', '', '', '', '', '', ''),
+(13, '12/12/2016', 'zertyui', 12, 'dfghbn', 'sdcfgvbhnj,k', 'dhgjkl', 'tghjkl', 'cvbn', 0, 'oui', 'oui', 'oui', '2', '2', '1', 'ertyuiop', '1', '1', '1', '1', '1', '0', '0', '0', '0', '0', '4', 'sqdwfxgchjbkn', 'wxcbvnezrtyuiop', '1', '1', '0', '0', '0', '0', '0', 'vhbjknl,mlkjhgfd', 'mlkjhgtfrdsw', '', '', '', '', '', ''),
+(14, '12/12/2016', 'zertyui', 12, 'dfghbn', 'sdcfgvbhnj,k', 'dhgjkl', 'tghjkl', 'cvbn', 0, 'oui', 'oui', 'oui', '2', '2', '1', 'ertyuiop', '1', '1', '1', '1', '1', '0', '0', '0', '0', '0', '4', 'sqdwfxgchjbkn', 'wxcbvnezrtyuiop', '1', '1', '0', '0', '0', '0', '0,223', 'vhbjknl,mlkjhgfd', 'mlkjhgtfrdsw', '', '', '', '', '', ''),
+(15, '12/12/2016', 'zertyui', 12, 'dfghbn', 'sdcfgvbhnj,k', 'dhgjkl', 'tghjkl', 'cvbn', 0, 'oui', 'oui', 'oui', '2', '2', '1', 'ertyuiop', '1', '1', '1', '1', '1', '0,234', '0,234', '0,234', '0,234', '0,234', '4,234', 'sqdwfxgchjbkn', 'wxcbvnezrtyuiop', '1', '1,5', '0,5', '0,223', '0,223', '0,223', '0,223', 'vhbjknl,mlkjhgfd', 'mlkjhgtfrdsw', '', '', '', '', '', ''),
+(16, '12/12/2016', 'zertyui', 12, 'dfghbn', 'sdcfgvbhnj,k', 'dhgjkl', 'tghjkl', 'cvbn', 0, 'oui', 'oui', 'oui', '2', '2', '1', 'ertyuiop', '1', '1', '1', '1', '1', '0,234', '0,234', '0,234', '0,234', '0,234', '4,234', 'sqdwfxgchjbkn', 'wxcbvnezrtyuiop', '1', '1,5', '0,5', '0,223', '0,223', '33', '0,223', 'vhbjknl,mlkjhgfd', 'mlkjhgtfrdsw', '', '', '', '', '', ''),
+(17, '12/12/2016', 'zertyui', 12, 'dfghbn', 'sdcfgvbhnj,k', 'dhgjkl', 'tghjkl', 'cvbn', 0, 'oui', 'oui', 'oui', '2', '2', '1', 'ertyuiop', '1', '1', '1', '1', '1', '0,234', '0,234', '0,234', '0,234', '0,234', '4,234', 'sqdwfxgchjbkn', 'wxcbvnezrtyuiop', '1', '1,5', '0,5', '0,223', '0,223', '', '0,223', 'vhbjknl,mlkjhgfd', 'mlkjhgtfrdsw', '', '', '', '', '', ''),
+(18, '12/12/2016', 'zertyui', 12, 'dfghbn', 'sdcfgvbhnj,k', 'dhgjkl', 'tghjkl', 'cvbn', 0, 'oui', 'oui', 'oui', '2', '2', '1', 'ertyuiop', '1', '1', '1', '1', '1', '0,234', '0,234', '0,234', '0,234', '0,234', '4,234', 'sqdwfxgchjbkn', 'wxcbvnezrtyuiop', '1', '1,5', '0,5', '0,223', '0,223', '3333', '0,223', 'vhbjknl,mlkjhgfd', 'mlkjhgtfrdsw', '', '', '', '', '', ''),
+(19, '12/12/2017', 'kuyjfthg', 32, 'jhghfd', 'pmlkjhg', 'mlkj,hn', 'm!l:k;,jnb', 'mlk;j,hnb', 0, 'poi', 'iu', 'kiu', '1,23', '1,23', '1,23', 'okijhg', '1', '1', '1', '1', '1', '1,23', '1,23', '1,23', '1,23', '1,23', '1,23', 'opiuyt', 'oliuyhgf', '1', '1', '1', '1,23', '1,23', '1,23', '1,23', 'iujh', 'oiuh', '5', '1,23', '1,23', 'rtyui', '12', '43'),
+(20, '12', 'dfcgvbn', 55, 'xcvb', ' vb', 'bn,', 'vbn,', 'cvbn', 0, 'jhkj', 'lkj', 'lk;j,hn', '1', '1', '1', 'fggvhb,j', '1', '1', '1', '1', '1', '0.625', '0.625', '0.625', '0.625', '0.625', '3.125', 'dfghj', 'cvbn,', '2', '2', '2', '1.25', '1.25', '1.25', '3.75', 'fdgbn', 'cvbn,', '5', '5', '5', '20/40', '11.875', '11.875');
 
 -- --------------------------------------------------------
 
@@ -185,7 +216,7 @@ ALTER TABLE `formations`
 -- AUTO_INCREMENT pour la table `resultatTest`
 --
 ALTER TABLE `resultatTest`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT pour la table `stage`
 --
