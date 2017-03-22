@@ -16,8 +16,10 @@ class Stagiaire {
     }
 
     // Recuperer un stagiare depuis la base de données
-    public static function RecupStagiaire($id){
-        $query  = DataBase::bdd()->prepare("SELECT * from stagiaires ORDER by id DESC");
+    public static function recupStagiaire(){
+        $promo  = ModelFormation::getLastPromo()["promo"];
+        $query  = DataBase::bdd()->prepare("SELECT * from stagiaires WHERE promo = :promo ORDER by id DESC");
+        $query->bindParam(":promo", $promo);
         $query->execute();
         $fetch  = $query->fetchAll();
         return sizeof($fetch) > 1 ? $fetch : false;
@@ -75,7 +77,6 @@ class Stagiaire {
         $execute->bindParam(':commentaire4', $resultat[40]);
         $execute->bindParam(':NbPoints', $resultat[41]);
         $execute->bindParam(':note', $resultat[42]);
-
         $execute->execute();
     }
 }
