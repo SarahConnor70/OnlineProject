@@ -46,7 +46,7 @@ class Stagiaire {
         return $execute->execute();
     }
     
-        public static function rechercheStagiaire($prenom, $nom){
+    public static function rechercheStagiaire($prenom, $nom){
         $query = DataBase::bdd()->prepare("SELECT * FROM stagiaires WHERE prenom =:prenom AND nom =:nom");
         $query->bindParam(":prenom", $prenom);
         $query->bindParam(":nom", $nom);
