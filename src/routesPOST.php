@@ -142,24 +142,6 @@ $app->post('/stagiaire', function($request, $response){
 
 });
 
-$app->post('/coordonnees', function($request, $response){
-
-	if(!empty($_POST['nomOnline']) && !empty($_POST['adresseOnline']) && !empty($_POST['telephoneOnline'])) {
-
-       $reponse = 'ok';
-       $online = [];
-       $online[0] = $_POST['nomOnline'];
-       $online[1] = $_POST['adresseOnline'];
-       $online[2] = $_POST['telephoneOnline'];
-       ModelCoord::setEntreprise($online);
-   } 
-   else {
-       $reponse = 'Les champs sont vides';
-   }
-   echo json_encode(['reponse' => $reponse]);
-});
-
-
 $app->post('/formation', function($request, $response){
 
     if(!empty($_POST['dateDebut']) && !empty($_POST['dateFin']) && !empty($_POST['placeRegion']) && !empty($_POST['placeSupp']) && !empty($_POST['intitule']) && !empty($_POST['titre'])){
