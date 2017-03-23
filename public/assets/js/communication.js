@@ -38,7 +38,7 @@ $(document).ready(function() {
     });
     //Resultats des tests
     $('#ajouterResultat').on('click', function(e){
-        e.preventDefault();
+          e.preventDefault();
         var date               = $('#date').val();
         var connuFormation     = $('#connuFormation').val();
         var age                = $('#age').val();
@@ -54,6 +54,7 @@ $(document).ready(function() {
         var pointFormation     = $('#pointFormation').val();
         var pointExperience    = $('#pointExperience').val();
         var commentaire1       = $('#commentaire1').val();
+        var prerequis          = $('#prerequis').val();
         var resultatTravail    = $('#resultatTravail').val();
         var resultatCuriosite  = $('#resultatCuriosite').val();
         var resultatDynamisme  = $('#resultatDynamisme').val();
@@ -66,7 +67,6 @@ $(document).ready(function() {
         var pointMobilite      = $('#pointMobilite').val();
         var total              = $('#total').val();
         var commentaire2       = $('#commentaire2').val();
-        var commentaires2      = $('#commentaires2').val(); 
         var resultatMetier     = $('#resultatMetier').val();
         var resultatEntreprise = $('#resultatEntreprise').val();
         var resultatProjet     = $('#resultatProjet').val();
@@ -75,7 +75,6 @@ $(document).ready(function() {
         var pointProjet        = $('#pointProjet').val();
         var total1             = $('#total1').val();
         var commentaire3       = $('#commentaire3').val();
-        var commentaires3      = $('#commentaires3 ').val();
         var resultatCulture    = $('#resultatCulture').val();
         var pointCulture       = $('#pointCulture').val();
         var total2             = $('#total2').val();
@@ -85,9 +84,9 @@ $(document).ready(function() {
 
 
         if (date!='' || connuFormation!='' || age!='' || prescription!='' || status!='' || prescripteur!='' || contreIndic!='' || commentaire!='' || resultatNiveau!='' || resultatFormation!='' 
-                     || resultatExperience!='' || pointNiveau!='' || pointFormation!='' || pointExperience!='' || commentaire1!=''|| resultatTravail!='' || resultatCuriosite!='' || resultatDynamisme!='' 
+                     || resultatExperience!='' || pointNiveau!='' || pointFormation!='' || pointExperience!='' || commentaire1!=''|| prerequis!='' || resultatTravail!='' || resultatCuriosite!='' || resultatDynamisme!='' 
                      || resultatDiscours!='' || resultatMobilite!='' || pointTravail!='' || pointCuriosite!='' || pointDynamisme!='' || pointDiscours!='' || pointMobilite!='' || total!='' || commentaire2!='' 
-                     || commentaires2!='' || resultatMetier!='' || resultatEntreprise!='' || resultatProjet!=''|| pointMetier!='' || pointEntreprise!='' || pointProjet!=''|| total1!='' || commentaire3!='' || commentaires3!=''
+                     || resultatMetier!='' || resultatEntreprise!='' || resultatProjet!=''|| pointMetier!='' || pointEntreprise!='' || pointProjet!=''|| total1!='' || commentaire3!=''
                      || resultatCulture!='' || pointCulture!='' || total2!='' || commentaire4!='' || NbPoints!='' || note!='') {
             $.ajax({
             url:'/stagiaire',
@@ -108,6 +107,7 @@ $(document).ready(function() {
                 "pointFormation"    : pointFormation,
                 "pointExperience"   : pointExperience,
                 "commentaire1"      : commentaire1,
+                "prerequis"         : prerequis,
                 "resultatTravail"   : resultatTravail,
                 "resultatCuriosite" : resultatCuriosite,
                 "resultatDynamisme" : resultatDynamisme,
@@ -120,7 +120,6 @@ $(document).ready(function() {
                 "pointMobilite"     : pointMobilite,
                 "total"             : total,
                 "commentaire2"      : commentaire2,
-                "commentaires2"     : commentaires2, 
                 "resultatMetier"    : resultatMetier,
                 "resultatEntreprise": resultatEntreprise,
                 "resultatProjet"    : resultatProjet,
@@ -128,8 +127,7 @@ $(document).ready(function() {
                 "pointEntreprise"   : pointEntreprise,
                 "pointProjet"       : pointProjet,
                 "total1"            : total1,
-                "commentaire3"      : commentaire3,
-                "commentaires3"     : commentaires3,                                    
+                "commentaire3"      : commentaire3,                                   
                 "resultatCulture"   : resultatCulture,
                 "pointCulture"      : pointCulture,
                 "total2"            : total2,
