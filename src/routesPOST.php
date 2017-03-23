@@ -56,19 +56,8 @@ $app->post('/stagiaire', function($request, $response){
         return $response->withJson(['recherche' => $resultat, 'reponse' => $reponse], 200, JSON_PRETTY_PRINT);
     }
 
-    else if(!empty($_POST['nomEntreprise']) && !empty($_POST['adresseEntreprise']) && !empty($_POST['telephoneEntreprise']) && !empty($_POST['nomTuteur'])){
-        $reponse = 'ok';
-        $infoEntreprise = [];
-        $infoEntreprise[0] = $_POST['nomEntreprise'];
-        $infoEntreprise[1] = $_POST['adresseEntreprise'];
-        $infoEntreprise[2] = $_POST['telephoneEntreprise'];
-        $infoEntreprise[3] = $_POST['nomTuteur'];
-        echo json_encode(['reponse' => $reponse]);
-    }
-
     else if(!empty($_POST['nomStagiaire']) && !empty($_POST['prenomStagiaire']) && !empty($_POST['telephoneStagiaire']) && !empty($_POST['mailStagiaire']) && !empty($_POST['adresseStagiaire']) && !empty($_POST['cpStagiaire']) && !empty($_POST['villeStagiaire'])){
         $reponse = 'ok';
-        $stagiaire = [];
         $stagiaire[0] = $_POST['nomStagiaire'];
         $stagiaire[1] = $_POST['prenomStagiaire'];
         $stagiaire[2] = $_POST['telephoneStagiaire'];
@@ -85,6 +74,17 @@ $app->post('/stagiaire', function($request, $response){
         }
         echo json_encode(['reponse' => $reponse]);
     }
+
+    else if(!empty($_POST['nomEntreprise']) && !empty($_POST['adresseEntreprise']) && !empty($_POST['telephoneEntreprise']) && !empty($_POST['nomTuteur'])){
+        $reponse = 'ok';
+        $infoEntreprise = [];
+        $infoEntreprise[0] = $_POST['nomEntreprise'];
+        $infoEntreprise[1] = $_POST['adresseEntreprise'];
+        $infoEntreprise[2] = $_POST['telephoneEntreprise'];
+        $infoEntreprise[3] = $_POST['nomTuteur'];
+        echo json_encode(['reponse' => $reponse]);
+    }
+    
     else{
         foreach($_POST as $key => $value) {
             if (empty($_POST[$key])) {
@@ -120,7 +120,6 @@ $app->post('/stagiaire', function($request, $response){
         $resultatTest[24] = $_POST['pointMobilite'];
         $resultatTest[25] = $_POST['total'];
         $resultatTest[26] = $_POST['commentaire2'];
-        $resultatTest[27] = $_POST['commentaires2'];
         $resultatTest[28] = $_POST['resultatMetier'];
         $resultatTest[29] = $_POST['resultatEntreprise'];
         $resultatTest[30] = $_POST['resultatProjet'];
@@ -129,7 +128,6 @@ $app->post('/stagiaire', function($request, $response){
         $resultatTest[33] = $_POST['pointProjet'];
         $resultatTest[34] = $_POST['total1'];
         $resultatTest[35] = $_POST['commentaire3'];
-        $resultatTest[36] = $_POST['commentaires3'];
         $resultatTest[37] = $_POST['resultatCulture'];
         $resultatTest[38] = $_POST['pointCulture'];
         $resultatTest[39] = $_POST['total2'];
@@ -142,6 +140,23 @@ $app->post('/stagiaire', function($request, $response){
         echo json_encode(['reponse' => "ok"]);
     }
 
+});
+
+$app->post('/coordonnees', function($request, $response){
+
+	if(!empty($_POST['nomOnline']) && !empty($_POST['adresseOnline']) && !empty($_POST['telephoneOnline'])) {
+
+       $reponse = 'ok';
+       $online = [];
+       $online[0] = $_POST['nomOnline'];
+       $online[1] = $_POST['adresseOnline'];
+       $online[2] = $_POST['telephoneOnline'];
+       ModelCoord::setEntreprise($online);
+   } 
+   else {
+       $reponse = 'Les champs sont vides';
+   }
+   echo json_encode(['reponse' => $reponse]);
 });
 
 
