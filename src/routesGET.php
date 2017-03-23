@@ -72,3 +72,11 @@ $app->get("/docpdf", function($request, $response, $args) {
         ]);
     }
 });
+$app->get("/logout", function($request, $response, $args) {
+    if (!login::VerifSession()) {
+        return $this->view->render($response, "index.phtml");
+    } else {
+        session_destroy();
+        return $this->view->render($response, 'index.phtml');
+    }
+});
