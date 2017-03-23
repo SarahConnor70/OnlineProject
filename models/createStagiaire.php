@@ -73,10 +73,10 @@ class Stagiaire {
     // Inserer un resultat de test
     public static function InsertResultat($resultat){
         $query      = "INSERT INTO resultatTest (date, connuFormation, age,prescription,status, prescripteur,
-                    contreIndic, commentaire, resultatNiveau, resultatFormation, resultatExperience,
+                    contreIndic, commentaire, resultatNiveau, resultatFormation, resultatExperience, idStagiaire,
                     pointNiveau, pointFormation, pointExperience, commentaire1, prerequis,resultatTravail,
                     resultatCuriosite, resultatDynamisme, resultatDiscours, resultatMobilite, pointTravail,
-                    pointCuriosite, pointDynamisme, pointDiscours, pointMobilite, total, commentaire2, resultatMetier, resultatEntreprise, resultatProjet, pointMetier, pointEntreprise, pointProjet, total1, commentaire3, resultatCulture, pointCulture, total2, commentaire4, NbPoints, note) VALUES(:date, :connuFormation, :age, :prescription, :status, :prescripteur, :contreIndic, :commentaire, :resultatNiveau, :resultatFormation, :resultatExperience, :pointNiveau, :pointFormation, :pointExperience, :commentaire1, :prerequis, :resultatTravail, :resultatCuriosite, :resultatDynamisme, :resultatDiscours, :resultatMobilite, :pointTravail, :pointCuriosite, :pointDynamisme, :pointDiscours, :pointMobilite, :total, :commentaire2, :resultatMetier, :resultatEntreprise, :resultatProjet, :pointMetier, :pointEntreprise, :pointProjet, :total1, :commentaire3, :resultatCulture, :pointCulture, :total2, :commentaire4, :NbPoints, :note)";
+                    pointCuriosite, pointDynamisme, pointDiscours, pointMobilite, total, commentaire2, resultatMetier, resultatEntreprise, resultatProjet, pointMetier, pointEntreprise, pointProjet, total1, commentaire3, resultatCulture, pointCulture, total2, commentaire4, NbPoints, note) VALUES(:date, :connuFormation, :age, :prescription, :status, :prescripteur, :contreIndic, :commentaire, :resultatNiveau, :resultatFormation, :resultatExperience, :idStagiaire, :pointNiveau, :pointFormation, :pointExperience, :commentaire1, :prerequis, :resultatTravail, :resultatCuriosite, :resultatDynamisme, :resultatDiscours, :resultatMobilite, :pointTravail, :pointCuriosite, :pointDynamisme, :pointDiscours, :pointMobilite, :total, :commentaire2, :resultatMetier, :resultatEntreprise, :resultatProjet, :pointMetier, :pointEntreprise, :pointProjet, :total1, :commentaire3, :resultatCulture, :pointCulture, :total2, :commentaire4, :NbPoints, :note)";
 
         $execute    = DataBase::bdd()->prepare($query);
         $execute->bindParam(':date', $resultat[0]);
@@ -121,6 +121,8 @@ class Stagiaire {
         $execute->bindParam(':commentaire4', $resultat[39]);
         $execute->bindParam(':NbPoints', $resultat[40]);
         $execute->bindParam(':note', $resultat[41]);
+        $id = "1";
+        $execute->bindParam(":idStagiaire", $id);
         $execute->execute();
     }
 }
