@@ -81,6 +81,7 @@ CREATE TABLE `resultatTest` (
   `pointFormation` varchar(5) NOT NULL,
   `pointExperience` varchar(5) NOT NULL,
   `commentaire1` varchar(255) NOT NULL,
+  `prerequis` varchar(255) NOT NULL;
   `resultatTravail` varchar(10) NOT NULL,
   `resultatCuriosite` varchar(10) NOT NULL,
   `resultatDynamisme` varchar(10) NOT NULL,
@@ -93,7 +94,6 @@ CREATE TABLE `resultatTest` (
   `pointMobilite` varchar(10) NOT NULL,
   `total` varchar(10) NOT NULL,
   `commentaire2` varchar(255) NOT NULL,
-  `commentaires2` varchar(255) NOT NULL,
   `resultatMetier` varchar(10) NOT NULL,
   `resultatEntreprise` varchar(10) NOT NULL,
   `resultatProjet` varchar(10) NOT NULL,
@@ -102,7 +102,6 @@ CREATE TABLE `resultatTest` (
   `pointProjet` varchar(10) NOT NULL,
   `total1` varchar(10) NOT NULL,
   `commentaire3` varchar(255) NOT NULL,
-  `commentaires3` varchar(255) NOT NULL,
   `resultatCulture` varchar(10) NOT NULL,
   `pointCulture` varchar(10) NOT NULL,
   `total2` varchar(10) NOT NULL,
