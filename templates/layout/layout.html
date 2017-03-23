@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
     <head>
         <meta charset="utf-8"/>
         <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png"/>
@@ -54,10 +54,16 @@
                                 <p>Jour de visite</p>
                             </a>
                         </li>
-                        <li class="active-pro">
+                        <li {% if (docpdf) %} class="active" {% endif %}>
                             <a href="/docpdf">
                                 <i class="material-icons">picture_as_pdf</i>
                                 <p>Télecharger un PDF</p>
+                            </a>
+                        </li>
+                          <li class="active-pro">
+                            <a href="/logout">
+                                <i class="material-icons">exit_to_app</i>
+                                <p>Déconnexion</p>
                             </a>
                         </li>
                     </ul>
@@ -95,9 +101,11 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
     <script>
         $( function() {
-            if (($("#dateDebut") != null) && ($("#dateFin") != null)) {
+            if (($("#dateDebut") != null) && ($("#dateFin") != null)  && ($("#date") != null)) {
                 $("#dateDebut").datepicker();
                 $("#dateFin").datepicker();
+                $("#date").datepicker();
+
             }
         } );
     </script>
