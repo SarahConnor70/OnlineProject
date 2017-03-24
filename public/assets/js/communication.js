@@ -136,8 +136,7 @@ $(document).ready(function() {
                 "note"              : note,
             },
             success: function(json){
-                var jsons = JSON.parse(json);
-                if(jsons.reponse == 'ok') {
+                if(json.reponse == 'ok') {
                     faireNotif('Les résultats du stagiaire ont bien été enregistrés!', 'success');
                 } else {
                     faireNotif('Echec lors de l\'ajout des résultats.', 'error');
@@ -206,13 +205,15 @@ $(document).ready(function() {
     });
      
     //Ajouter les stages
-    $('#ajouterStage').on('click', function(e){
+    $('#ajouterStages').on('click', function(e){
         e.preventDefault();
-
         var nomEntreprise       = $('#nomEntreprise').val();
         var adresseEntreprise   = $('#adresseEntreprise').val();
         var telephoneEntreprise = $('#telephoneEntreprise').val();
         var nomTuteur           = $('#nomTuteur').val();
+        var cpEntreprise        = $('#cpEntreprise').val();
+        var villeEntreprise     = $('#villeEntreprise').val();
+        var nomStagiaire        = $('#nmStagiaire').val();
 
         if(nomEntreprise != '' || adresseEntreprise != '' || telephoneEntreprise != '' || nomTuteur != ''){
             $.ajax({
@@ -222,11 +223,13 @@ $(document).ready(function() {
                     "nomEntreprise": nomEntreprise,
                     "adresseEntreprise": adresseEntreprise,
                     "telephoneEntreprise": telephoneEntreprise,
-                    "nomTuteur": nomTuteur
+                    "nomTuteur": nomTuteur,
+                    "cpEntreprise": cpEntreprise,
+                    "villeEntreprise": villeEntreprise,
+                    "nomStagiaire": nomStagiaire
                 },
                 success: function(json){
-                    var jsons = JSON.parse(json);
-                    if(jsons.reponse == 'ok') {
+                    if(json.reponse == 'ok') {
                         faireNotif('Informations de l\'entreprise ok', 'primary');
                     } else {
                         faireNotif('Informations de l\'entreprise incorrect', 'error');
@@ -251,7 +254,7 @@ $(document).ready(function() {
         var prenomRecherche = $('#prenomRecherche').val();
         var nomRecherche = $('#nomRecherche').val();
 
-        if(prenomRecherche != '' && nomRecherche != ''){
+        if((prenomRecherche != '') && (nomRecherche != '')) {
             $.ajax({
                 url:'/stagiaire',
                 type:'post',
@@ -262,21 +265,29 @@ $(document).ready(function() {
                 success: function(json){
                     //var jsons = JSON.parse(json);
                     if(json.reponse == 'ok') {
-                        $('#nomStagiaire').val(json.recherche.nom);
-                        $('#prenomStagiaire').val(json.recherche.prenom);
-                        $('#telephoneStagiaire').val(json.recherche.telephone);
-                        $('#mailStagiaire').val(json.recherche.mail);
-                        $('#adresseStagiaire').val(json.recherche.adresse);
-                        $('#cpStagiaire').val(json.recherche.cp);
-                        $('#villeStagiaire').val(json.recherche.ville);
+                        var info = {
+                            nomStagiaire: json.recherche.nom,
+                            prenomStagiaire: json.recherche.prenom,
+                            telephoneStagiaire: json.recherche.telephone,
+                            mailStagiaire: json.recherche.mail,
+                            adresseStagiaire: json.recherche.adresse,
+                            cpStagiaire: json.recherche.cp,
+                            villeStagiaire: json.recherche.ville
+                        };
+                        for (var ins in info) {
+                            if ((ins == "nomStagiaire" || ins == "prenomStagiaire")) {
+                                $("#" + ins).attr('disabled', true);
+                            }
+                            $("#" + ins).val(info[ins]);
+                        }
                         $('#' + json.recherche.accepter).attr('checked', true);
                         $('#test1').show().addClass("active");
                         $('#test2').removeClass("active").hide();
                         $('#test3').removeClass("active").hide();
                         $('#test4').removeClass("active").hide();
-                        faireNotif('Recherche éffectuée', 'primary');
+                        faireNotif('Recherche effectuée avec succès!', 'primary');
                     } else {
-                        faireNotif('Recherche impossible', 'error');
+                        faireNotif('Recherche impossible; La personne n\existe probablement pas.', 'error');
                     }
                 },
                 error: function(json) {
@@ -315,8 +326,7 @@ $(document).ready(function() {
                     "accepter": accepter
                 },
                 success: function(json){
-                    var jsons = JSON.parse(json);
-                    if(jsons.reponse == 'ok') {
+                    if(json.reponse == 'ok') {
                         faireNotif('json ok pour envoie des données', 'primary');
                     } else {
                         faireNotif('erreur lors de l\'envoi des données', 'error');
@@ -378,7 +388,7 @@ $(document).ready(function() {
 
 
     //coordonnées
-    $('#online').on('submit', function(e) {
+    $('#majcoord').on('click', function(e) {
         e.preventDefault();  // Le formulaire ne s'envoie pas
         var nomOnline       = $('#nomOnline').html();
         var adresseOnline   = $('#adresseOnline').html();
@@ -396,7 +406,8 @@ $(document).ready(function() {
                     "telephoneOnline": telephoneOnline,
                 },
                 success: function(json){
-                    if(json.reponse == 'ok'){
+                    var jsons = JSON.parse(json);
+                    if(jsons.reponse == 'ok'){
                         faireNotif("Les coordonnées ont bien été sauvegardées.", "primary");
                     } else {
                         faireNotif("Erreur lors du changement des coordonnées.", "error");
@@ -452,7 +463,6 @@ $(document).ready(function() {
             url: '/jvisite',
             method: 'POST',
             success: function(json) {
-                console.log
                 if (json == "") {
                     $("#jvisite").html("Pas de stagiaire");
                 } else {
@@ -480,14 +490,12 @@ $(document).ready(function() {
             long:6.15067 
         }];
         for (var villes in ville) {
-            console.log(ville[villes]);
             $.ajax({
                 url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' + ville[villes].replace(/ /g, '+') + '&key=AIzaSyBSPF5q5m2uk0mcsHl48SFcCukZ7ksQY_E',
                 method: 'GET',
                 async: false,
             
             }).done(function(json) {
-                console.log(json);
                 var localisation = json.results[0]["geometry"]["location"];
                 tab.push({
                     name: ville[villes],
@@ -497,7 +505,6 @@ $(document).ready(function() {
             });
         }
         calculate(tab);
-
     }
 
     function faireNotif(message, type) {

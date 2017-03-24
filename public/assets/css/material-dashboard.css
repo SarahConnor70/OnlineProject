@@ -1944,8 +1944,8 @@ label.control-label {
 }
 
 .form-group {
-  /*padding-bottom: 7px;*/
-  margin: -5px 0 0 0;
+  padding-bottom: 7px;
+  margin: 27px 0 0 0;
 }
 .form-group .form-control {
   margin-bottom: 7px;

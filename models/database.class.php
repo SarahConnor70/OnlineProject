@@ -4,7 +4,7 @@ class DataBase {
     
     public static function bdd() {
         $host   = "127.0.0.1";
-        $base   = "projetOnline";
+        $base   = "projectOnline";
         $login  = "root";
         $pass    = "";
         try {
