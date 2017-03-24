@@ -38,7 +38,9 @@ $(document).ready(function() {
     });
     //Resultats des tests
     $('#ajouterResultat').on('click', function(e){
-          e.preventDefault();
+        e.preventDefault();
+        var nomResultat        = $('#nomResultat').val();
+        var prenomResultat     = $('#prenomResultat').val();
         var date               = $('#date').val();
         var connuFormation     = $('#connuFormation').val();
         var age                = $('#age').val();
@@ -82,12 +84,11 @@ $(document).ready(function() {
         var NbPoints           = $('#NbPoints').val();
         var note               = $('#note').val();
 
-
         if (date!='' || connuFormation!='' || age!='' || prescription!='' || status!='' || prescripteur!='' || contreIndic!='' || commentaire!='' || resultatNiveau!='' || resultatFormation!='' 
                      || resultatExperience!='' || pointNiveau!='' || pointFormation!='' || pointExperience!='' || commentaire1!=''|| prerequis!='' || resultatTravail!='' || resultatCuriosite!='' || resultatDynamisme!='' 
                      || resultatDiscours!='' || resultatMobilite!='' || pointTravail!='' || pointCuriosite!='' || pointDynamisme!='' || pointDiscours!='' || pointMobilite!='' || total!='' || commentaire2!='' 
                      || resultatMetier!='' || resultatEntreprise!='' || resultatProjet!=''|| pointMetier!='' || pointEntreprise!='' || pointProjet!=''|| total1!='' || commentaire3!=''
-                     || resultatCulture!='' || pointCulture!='' || total2!='' || commentaire4!='' || NbPoints!='' || note!='') {
+                     || resultatCulture!='' || pointCulture!='' || total2!='' || commentaire4!='' || NbPoints!='' || note!='' || nomResultat!='' || prenomResultat!='') {
             $.ajax({
             url:'/stagiaire',
             type: 'POST',
@@ -134,6 +135,8 @@ $(document).ready(function() {
                 "commentaire4"      : commentaire4,
                 "NbPoints"          : NbPoints,
                 "note"              : note,
+                "nomResultat"       : nomResultat,
+                "prenomResultat"    : prenomResultat
             },
             success: function(json){
                 if(json.reponse == 'ok') {
