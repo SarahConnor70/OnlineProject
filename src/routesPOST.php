@@ -30,25 +30,23 @@ $app->post('/jvisite', function($request, $response, $args) {
     return $response->withJson($data, 200, JSON_PRETTY_PRINT);
 });
 
-$app->post('/coordonnees', function($request, $response){
-
+$app->post('/coordonnees', function($request, $response) {
 	if(!empty($_POST['nomOnline']) && !empty($_POST['adresseOnline']) && !empty($_POST['telephoneOnline'])) {
-    		if(($_POST['nomOnline'] !== '') && ($_POST['adresseOnline'] !== '') && ($_POST['telephoneOnline'] !=='')) {
-        		$reponse = 'ok';
-        		$online = [];
-			$online[0] = $_POST['nomOnline'];
-			$online[1] = $_POST['adresseOnline'];
-			$online[2] = $_POST['telephoneOnline'];
-			ModelCoord::setEntreprise($online);
-    		} 
-		else {
-        		$reponse = 'Les champs sont vides';
-    		}
+        if(($_POST['nomOnline'] !== '') && ($_POST['adresseOnline'] !== '') && ($_POST['telephoneOnline'] !=='')) {
+            $reponse    = 'ok';
+            $online     = [];
+            $online[0]  = $_POST['nomOnline'];
+            $online[1]  = $_POST['adresseOnline'];
+            $online[2]  = $_POST['telephoneOnline'];
+            ModelCoord::setEntreprise($online);
+        }  else {
+            $reponse = 'Les champs sont vides';
+        }
+	} else {
+        $reponse = 'Tous les champs ne sont setter';
 	}
-	else {
-    		$reponse = 'Tous les champs ne sont setter';
-	}
-	echo json_encode(['reponse' => $reponse]);
+    $response->withHeader('Content-type', 'application/json');
+    return $response->withJson(["reponse" => $reponse], 200, JSON_PRETTY_PRINT);
 });
 
 
@@ -98,21 +96,17 @@ $app->post('/stagiaire', function($request, $response){
 
 $app->post('/formation', function($request, $response){
     if(!empty($_POST['dateDebut']) && !empty($_POST['dateFin']) && !empty($_POST['placeRegion']) && !empty($_POST['placeSupp']) && !empty($_POST['intitule']) && !empty($_POST['titre'])){
-        $reponse='ok';
-        $formation = [];
-        $formation[0] = $_POST['dateDebut'];
-        $formation[1] = $_POST['dateFin'];
-        $formation[2] = $_POST['placeRegion'];
-        $formation[3] = $_POST['placeSupp'];
-        $formation[4] = $_POST['intitule'];
-        $formation[5] = $_POST['titre'];
-	    $formation[6] = $_POST["promo"];
+        $reponse    ='ok';
+        $formation  = [];
+        $i          = 0;
+        foreach($_POST as $key => $value) {
+            $i++;
+            $formation[$i] = $value;
+        }
         ModelFormation::setFormation($formation);
-    } else{
+    } else {
         $reponse = "Les champs sont vides";
     }
     $response->withHeader('Content-type', 'application/json');
     return $response->withJson(['reponse' => $reponse], 200, JSON_PRETTY_PRINT);
 });
-
-?>
