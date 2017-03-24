@@ -143,7 +143,7 @@ CREATE TABLE `stagiaires` (
   `cp` int(5) NOT NULL,
   `ville` varchar(50) NOT NULL,
   `mail` varchar(100) NOT NULL,
-  `telephone` int(10) NOT NULL,
+  `telephone` varchar(10) NOT NULL,
   `adresse` varchar(255) NOT NULL,
   `promo` int(8) NOT NULL,
   `accepter` varchar(255) NOT NULL
