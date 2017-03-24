@@ -386,7 +386,6 @@ $(document).ready(function() {
         }
     });
 
-
     //coordonnées
     $('#majcoord').on('click', function(e) {
         e.preventDefault();  // Le formulaire ne s'envoie pas
@@ -406,8 +405,7 @@ $(document).ready(function() {
                     "telephoneOnline": telephoneOnline,
                 },
                 success: function(json){
-                    var jsons = JSON.parse(json);
-                    if(jsons.reponse == 'ok'){
+                    if(json.reponse == 'ok'){
                         faireNotif("Les coordonnées ont bien été sauvegardées.", "primary");
                     } else {
                         faireNotif("Erreur lors du changement des coordonnées.", "error");
@@ -432,14 +430,13 @@ $(document).ready(function() {
         return word.replace(/[^/\"_+-=a-zA-Z 0-9]+/g,'');
     }
 
-
     function loadStagiaire() {
         $.ajax({
             url: '/dashboard',
             method: 'POST',
             success: function(json) {
-                if (json == "") {
-                    $("#stage").html("Pas de stagiaire");
+                if ((json == "" || json == false)) {
+                    $("#stage").html("Pas de stagiaire.");
                 } else {
                     var ls = '';
                     for (var i = 0; i < json.length; i++) {
