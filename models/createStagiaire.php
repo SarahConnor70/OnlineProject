@@ -80,8 +80,8 @@ class Stagiaire {
     }
 
     // Inserer un resultat de test
-    public static function InsertResultat($resultat){
-        $query      = "INSERT INTO resultatTest (date, connuFormation, age,prescription,status, prescripteur,
+    public static function InsertResultat($resultat, $id){
+        $query      = "INSERT INTO resultattest (date, connuFormation, age,prescription,status, prescripteur,
                     contreIndic, commentaire, resultatNiveau, resultatFormation, resultatExperience, idStagiaire,
                     pointNiveau, pointFormation, pointExperience, commentaire1, prerequis,resultatTravail,
                     resultatCuriosite, resultatDynamisme, resultatDiscours, resultatMobilite, pointTravail,
@@ -89,9 +89,10 @@ class Stagiaire {
 
         $execute    = DataBase::bdd()->prepare($query);
         foreach($resultat as $key => &$value) {
-            $execute->bindParam(':'.$key, $value, PDO::PARAM_STR);
+            if (!in_array($key, ["nomResultat", "prenomResultat"])) {
+                $execute->bindParam(':'.$key, $value, PDO::PARAM_STR);
+            }
         }
-        $id = 1;
         $execute->bindParam(":idStagiaire", $id);
         $execute->execute();
     }
