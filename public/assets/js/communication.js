@@ -183,6 +183,38 @@ $(document).ready(function() {
         return multiple;
 
      }
+    
+    
+     function oui(inputoui){
+
+        var oui;
+        if(inputoui == "oui"){
+            oui = 1;
+        }
+        else {
+            oui = 0;
+        }
+        return oui;
+     }
+
+    function somme(){
+        var niveau = $('#pointNiveau').val();
+        var formation = $('#pointFormation').val();
+        var experience = $('#pointExperience').val();
+
+        var somme = niveau + formation + experience;
+        console.log(somme);
+        if (somme >= 1) 
+        {
+            return "oui";
+        } 
+        else
+            {
+                return "non";
+            }
+
+     }
+
 
     $('#calculerResultat').on('click', function(e){
 
@@ -202,6 +234,10 @@ $(document).ready(function() {
         $('#commentaire4').val(multiplier($('#total2').val()));
         $('#NbPoints').val(addition1($('#total').val(), $('#total1').val(), $('#total2').val()));
         $('#note').val($('#NbPoints').val());
+        $('#pointNiveau').val(oui($('#resultatNiveau').val()));
+        $('#pointFormation').val(oui($('#resultatFormation').val()));
+        $('#pointExperience').val(oui($('#resultatExperience').val()));
+        $('#prerequis').val(somme());
     });
      
     //Ajouter les stages
