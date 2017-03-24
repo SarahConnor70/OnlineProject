@@ -84,13 +84,14 @@ $app->post('/stagiaire', function($request, $response){
     } else {
         $resultat = [];
         $i        = 0;
+        $id       = Stagiaire::rechercheStagiaire($_POST['nomResultat'], $_POST['prenomResultat'])['id'];
         foreach($_POST as $key => $value) {
             $i++;
             $resultat[$key] = $value;
         }
-        Stagiaire::InsertResultat($resultat);
+        Stagiaire::InsertResultat($resultat, $id);
         $response->withHeader('Content-type', 'application/json');
-        return $response->withJson(['reponse' => "ok"], 200, JSON_PRETTY_PRINT);
+        return $response->withJson(['reponse' => 'ok'], 200, JSON_PRETTY_PRINT);
     }
 });
 
