@@ -249,9 +249,13 @@ $(document).ready(function() {
         var nomTuteur           = $('#nomTuteur').val();
         var cpEntreprise        = $('#cpEntreprise').val();
         var villeEntreprise     = $('#villeEntreprise').val();
+        var mailEntreprise      = $('#mailEntreprise').val();
         var nomStagiaire        = $('#nmStagiaire').val();
+        var jourVisite          = $('#jourVisite').val();
+        var heureVisite         = $('#heureVisite').val();
 
-        if(nomEntreprise != '' || adresseEntreprise != '' || telephoneEntreprise != '' || nomTuteur != ''){
+
+        if(nomEntreprise != '' || adresseEntreprise != '' || telephoneEntreprise != '' || cpEntreprise != '' || nomStagiaire !='' || villeEntreprise != '' || nomTuteur != ''){
             $.ajax({
                 url:'/stagiaire',
                 type:'POST',
@@ -261,14 +265,17 @@ $(document).ready(function() {
                     "telephoneEntreprise": telephoneEntreprise,
                     "nomTuteur": nomTuteur,
                     "cpEntreprise": cpEntreprise,
+                    "mailEntreprise": mailEntreprise,
                     "villeEntreprise": villeEntreprise,
-                    "nomStagiaire": nomStagiaire
+                    "nomStagiaire": nomStagiaire,
+                    "date": jourVisite,
+                    "heure": heureVisite
                 },
                 success: function(json){
                     if(json.reponse == 'ok') {
-                        faireNotif('Informations de l\'entreprise ok', 'primary');
+                        faireNotif('Informations du stage ok', 'primary');
                     } else {
-                        faireNotif('Informations de l\'entreprise incorrect', 'error');
+                        faireNotif('Informations du stage incorrect', 'error');
                     }
                 },
                 error: function(json) {
@@ -561,10 +568,6 @@ $(document).ready(function() {
     });
 
     $('#atest3').on('click', function(e){
-        $('#test1').hide();
-    });
-
-    $('#atest4').on('click', function(e){
         $('#test1').hide();
     });
 });
