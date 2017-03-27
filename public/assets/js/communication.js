@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    var form   = ["nomOnline", "adresseOnline", "telephoneOnline"];
     $(document).on('click', function(e) {
         if (e.target.id.length == 1 && !isNaN(e.target.id)) {
             var ville = $(this).find('#direction' + e.target.id).text().split(",");
@@ -429,8 +430,26 @@ $(document).ready(function() {
 
 
     //coordonnées
-    $('#majcoord').on('click', function(e) {
+    $("#majcoord").on('click', function(e) {
+        e.preventDefault();
+        var button = $("#majcoord2");
+        if (button.css('display') == 'none') {
+            button.show();
+            for (var frm in form) {
+                $("#" + form[frm]).attr('contenteditable', true);
+            }
+        } else {
+            button.hide();
+            for (var frm in form) {
+                $("#" + form[frm]).attr('contenteditable', false);
+            }
+        }
+    });
+
+
+    $('#majcoord2').on('click', function(e) {
         e.preventDefault();  // Le formulaire ne s'envoie pas
+        var button          = $("#majcoord2");
         var nomOnline       = $('#nomOnline').html();
         var adresseOnline   = $('#adresseOnline').html();
         var telephoneOnline = $('#telephoneOnline').html();
@@ -447,8 +466,11 @@ $(document).ready(function() {
                     "telephoneOnline": telephoneOnline,
                 },
                 success: function(json){
-                    var jsons = JSON.parse(json);
-                    if(jsons.reponse == 'ok'){
+                    button.hide();
+                    for (var frm in form) {
+                        $("#" + form[frm]).attr('contenteditable', false);
+                    }
+                    if(json.reponse == 'ok'){
                         faireNotif("Les coordonnées ont bien été sauvegardées.", "success");
                     } else {
                         faireNotif("Erreur lors du changement des coordonnées.", "error");
@@ -479,6 +501,7 @@ $(document).ready(function() {
             url: '/dashboard',
             method: 'POST',
             success: function(json) {
+                $("#nombre").html((json.length == undefined ? 0 : json.length));
                 if (json == "") {
                     $("#stage").html("Pas de stagiaire");
                 } else {
