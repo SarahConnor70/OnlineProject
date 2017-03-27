@@ -15,3 +15,5 @@ class ModelCoord {
         return $execute->fetch();
     }
 }
+
+?>

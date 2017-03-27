@@ -32,12 +32,17 @@ class Stagiaire {
     public static function insertStage($stage, $update = false) {
         if ($update == false) {
             $promo  = ModelFormation::getLastPromo()["promo"];
-            $query = Database::bdd()->prepare("INSERT into stage(entreprise, adresse, tuteur, telephone, stagiaire, promo) VALUES(:entreprise, :adresse, :tuteur, :telephone, :stagiaire, :promo)");
+            $query = Database::bdd()->prepare("INSERT into stage(entreprise, tuteur, telephone, mail, adresse, cp, ville, dateRDV, heureRDV, stagiaire, promo) VALUES(:entreprise, :tuteur, :telephone, :mail, :adresse, :cp, :ville, :dateRDV, :heureRDV, :stagiaire, :promo)");
             $query->bindParam(':entreprise', $stage[0]);
             $query->bindParam(':adresse', $stage[1]);
-            $query->bindParam(':tuteur', $stage[3]);
             $query->bindParam(':telephone', $stage[2]);
-            $query->bindParam(':stagiaire', $stage[6]);
+            $query->bindParam(':tuteur', $stage[3]);
+            $query->bindParam(':cp', $stage[4]);
+            $query->bindParam(':mail', $stage[5]);
+            $query->bindParam(':ville', $stage[6]);
+            $query->bindParam(':stagiaire', $stage[7]);
+            $query->bindParam(':dateRDV', $stage[8]);
+            $query->bindParam(':heureRDV', $stage[9]);
             $query->bindParam(':promo', $promo);
             return $query->execute();
         }
@@ -51,7 +56,7 @@ class Stagiaire {
         $query->execute();
         $fetch  = $query->fetchAll();
         for ($i = 0; $i < sizeof($fetch); $i++) {
-            $data[$fetch[$i]['date']][] .= $fetch[$i]["adresse"] . " " . $fetch[$i]["cp"] . " " . $fetch[$i]["ville"];
+            $data[$fetch[$i]['dateRDV']][] .= $fetch[$i]["adresse"] . " " . $fetch[$i]["cp"] . " " . $fetch[$i]["ville"];
         }
         return $data;
     }
@@ -97,3 +102,5 @@ class Stagiaire {
         $execute->execute();
     }
 }
+
+?>

@@ -26,3 +26,5 @@ class Login {
         return isset($_SESSION["token_connexion"]) ? true : false;
     }
 }
+
+?>
