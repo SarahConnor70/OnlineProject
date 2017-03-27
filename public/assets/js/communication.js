@@ -38,9 +38,7 @@ $(document).ready(function() {
     });
     //Resultats des tests
     $('#ajouterResultat').on('click', function(e){
-        e.preventDefault();
-        var nomResultat        = $('#nomResultat').val();
-        var prenomResultat     = $('#prenomResultat').val();
+          e.preventDefault();
         var date               = $('#date').val();
         var connuFormation     = $('#connuFormation').val();
         var age                = $('#age').val();
@@ -84,11 +82,12 @@ $(document).ready(function() {
         var NbPoints           = $('#NbPoints').val();
         var note               = $('#note').val();
 
+
         if (date!='' || connuFormation!='' || age!='' || prescription!='' || status!='' || prescripteur!='' || contreIndic!='' || commentaire!='' || resultatNiveau!='' || resultatFormation!='' 
                      || resultatExperience!='' || pointNiveau!='' || pointFormation!='' || pointExperience!='' || commentaire1!=''|| prerequis!='' || resultatTravail!='' || resultatCuriosite!='' || resultatDynamisme!='' 
                      || resultatDiscours!='' || resultatMobilite!='' || pointTravail!='' || pointCuriosite!='' || pointDynamisme!='' || pointDiscours!='' || pointMobilite!='' || total!='' || commentaire2!='' 
                      || resultatMetier!='' || resultatEntreprise!='' || resultatProjet!=''|| pointMetier!='' || pointEntreprise!='' || pointProjet!=''|| total1!='' || commentaire3!=''
-                     || resultatCulture!='' || pointCulture!='' || total2!='' || commentaire4!='' || NbPoints!='' || note!='' || nomResultat!='' || prenomResultat!='') {
+                     || resultatCulture!='' || pointCulture!='' || total2!='' || commentaire4!='' || NbPoints!='' || note!='') {
             $.ajax({
             url:'/stagiaire',
             type: 'POST',
@@ -135,8 +134,6 @@ $(document).ready(function() {
                 "commentaire4"      : commentaire4,
                 "NbPoints"          : NbPoints,
                 "note"              : note,
-                "nomResultat"       : nomResultat,
-                "prenomResultat"    : prenomResultat
             },
             success: function(json){
                 if(json.reponse == 'ok') {
@@ -186,8 +183,8 @@ $(document).ready(function() {
         return multiple;
 
      }
-    
-    
+
+
      function oui(inputoui){
 
         var oui;
@@ -206,7 +203,6 @@ $(document).ready(function() {
         var experience = $('#pointExperience').val();
 
         var somme = niveau + formation + experience;
-        console.log(somme);
         if (somme >= 1) 
         {
             return "oui";
@@ -215,9 +211,7 @@ $(document).ready(function() {
             {
                 return "non";
             }
-
-     }
-
+    }
 
     $('#calculerResultat').on('click', function(e){
 
@@ -241,6 +235,7 @@ $(document).ready(function() {
         $('#pointFormation').val(oui($('#resultatFormation').val()));
         $('#pointExperience').val(oui($('#resultatExperience').val()));
         $('#prerequis').val(somme());
+
     });
      
     //Ajouter les stages
@@ -276,7 +271,7 @@ $(document).ready(function() {
                 },
                 success: function(json){
                     if(json.reponse == 'ok') {
-                        faireNotif('Informations du stage ok', 'primary');
+                        faireNotif('Informations du stage ok', 'success');
                     } else {
                         faireNotif('Informations du stage incorrect', 'error');
                     }
@@ -331,7 +326,7 @@ $(document).ready(function() {
                         $('#test2').removeClass("active").hide();
                         $('#test3').removeClass("active").hide();
                         $('#test4').removeClass("active").hide();
-                        faireNotif('Recherche effectuée avec succès!', 'primary');
+                        faireNotif('Recherche effectuée avec succès!', 'success');
                     } else {
                         faireNotif('Recherche impossible; La personne n\existe probablement pas.', 'error');
                     }
@@ -373,7 +368,7 @@ $(document).ready(function() {
                 },
                 success: function(json){
                     if(json.reponse == 'ok') {
-                        faireNotif('json ok pour envoie des données', 'primary');
+                        faireNotif('Les données se sont bien envoyées', 'success');
                     } else {
                         faireNotif('erreur lors de l\'envoi des données', 'error');
                     }
@@ -420,7 +415,7 @@ $(document).ready(function() {
                 },
                 success: function(json){
                     if(json.reponse == 'ok'){
-                        faireNotif("La formation ''" + entities(intitule) + "'' a bien été ajouté.", "primary");
+                        faireNotif("La formation ''" + entities(intitule) + "'' a bien été ajouté.", "success");
                     } else {
                         faireNotif("Erreur lors de l'ajout de la formation.", "error");
                     }
@@ -431,6 +426,7 @@ $(document).ready(function() {
             });
         }
     });
+
 
     //coordonnées
     $('#majcoord').on('click', function(e) {
@@ -451,8 +447,9 @@ $(document).ready(function() {
                     "telephoneOnline": telephoneOnline,
                 },
                 success: function(json){
-                    if(json.reponse == 'ok'){
-                        faireNotif("Les coordonnées ont bien été sauvegardées.", "primary");
+                    var jsons = JSON.parse(json);
+                    if(jsons.reponse == 'ok'){
+                        faireNotif("Les coordonnées ont bien été sauvegardées.", "success");
                     } else {
                         faireNotif("Erreur lors du changement des coordonnées.", "error");
                     }
@@ -476,13 +473,14 @@ $(document).ready(function() {
         return word.replace(/[^/\"_+-=a-zA-Z 0-9]+/g,'');
     }
 
+
     function loadStagiaire() {
         $.ajax({
             url: '/dashboard',
             method: 'POST',
             success: function(json) {
-                if ((json == "" || json == false)) {
-                    $("#stage").html("Pas de stagiaire.");
+                if (json == "") {
+                    $("#stage").html("Pas de stagiaire");
                 } else {
                     var ls = '';
                     for (var i = 0; i < json.length; i++) {
@@ -571,6 +569,10 @@ $(document).ready(function() {
     });
 
     $('#atest3').on('click', function(e){
+        $('#test1').hide();
+    });
+
+    $('#atest4').on('click', function(e){
         $('#test1').hide();
     });
 });
